@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/button_linkDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Link to Database"
+        android:textColor="#FFFFFFFF" />
+
+    <Button
+        android:id="@+id/button_inputCadets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_linkDB"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Input Cadets"
+        android:textColor="#FFFFFFFF" />
+
+    <Button
+        android:id="@+id/button_cadetAnalytics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_inputCadets"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Cadet Analytics"
+        android:textColor="#FFFFFFFF" />
+
+    <Button
+        android:id="@+id/button_createNewEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_cadetAnalytics"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Create New Event"
+        android:textColor="#FFFFFFFF" />
+
+    <Button
+        android:id="@+id/button_exportDatabase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_createNewEvent"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Export Database"
+        android:textColor="#FFFFFFFF" />
+
+</LinearLayout>

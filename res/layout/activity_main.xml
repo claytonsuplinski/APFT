@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/button_gradeAPFT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Grade APFT"
+        android:textColor="#FFFFFFFF" />
+
+    <Button
+        android:id="@+id/button_quickCalc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_gradeAPFT"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Quick APFT Calculator"
+        android:textColor="#FFFFFFFF" />
+
+    <Button
+        android:id="@+id/button_dbOps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_quickCalc"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Database Ops"
+        android:textColor="#FFFFFFFF" />
+
+    <Button
+        android:id="@+id/button_leaderboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_dbOps"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Leaderboard"
+        android:textColor="#FFFFFFFF" />
+
+</RelativeLayout>
