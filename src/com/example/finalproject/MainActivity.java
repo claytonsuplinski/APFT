@@ -31,20 +31,20 @@ public class MainActivity extends Activity {
 		case R.id.button_gradeAPFT:
 			i = new Intent(this, gradeApftActivity.class);
 			startActivity(i);
-			Toast.makeText(this, "Grade APFT button selected.", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.button_quickCalc:
 			i = new Intent(this, apftCalculator.class);
 			startActivity(i);
-			Toast.makeText(this, "Quick Calc button selected.", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.button_dbOps:
 			i = new Intent(this, databaseOps.class);
 			startActivity(i);
-			Toast.makeText(this, "Database Ops button selected.", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.button_leaderboard:
 			Toast.makeText(this, "Leaderboard button selected.", Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.button_analytics:
+			Toast.makeText(this, "Analytics button selected.", Toast.LENGTH_SHORT).show();
 			break;
 
 		default:

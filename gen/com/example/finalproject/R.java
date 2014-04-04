@@ -30,8 +30,9 @@ public final class R {
         public static final int splash=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080015;
+        public static final int action_settings=0x7f080016;
         public static final int button_2milerun=0x7f080010;
+        public static final int button_analytics=0x7f080015;
         public static final int button_cadetAnalytics=0x7f08000b;
         public static final int button_createNewEvent=0x7f08000c;
         public static final int button_dbOps=0x7f080013;
