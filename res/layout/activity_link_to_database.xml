@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/button_linkDB"
+        android:id="@+id/button_inputCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -14,33 +14,46 @@
         android:layout_marginTop="@dimen/btn_margin_vertical"
         android:background="@drawable/gradient"
         android:onClick="onButtonClick"
-        android:text="Link to Database"
+        android:text="Input Database Code"
         android:textColor="#FFFFFFFF" />
 
     <Button
-        android:id="@+id/button_inputCadets"
+        android:id="@+id/button_createNewDatabase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_linkDB"
+        android:layout_below="@id/button_inputCode"
         android:layout_marginLeft="@dimen/btn_margin_horizontal"
         android:layout_marginRight="@dimen/btn_margin_horizontal"
         android:layout_marginTop="@dimen/btn_margin_vertical"
         android:background="@drawable/gradient"
         android:onClick="onButtonClick"
-        android:text="Input/Edit Cadets"
+        android:text="Create New Database"
         android:textColor="#FFFFFFFF" />
 
     <Button
-        android:id="@+id/button_createNewEvent"
+        android:id="@+id/button_myDatabases"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_inputCadets"
+        android:layout_below="@id/button_createNewDatabase"
         android:layout_marginLeft="@dimen/btn_margin_horizontal"
         android:layout_marginRight="@dimen/btn_margin_horizontal"
         android:layout_marginTop="@dimen/btn_margin_vertical"
         android:background="@drawable/gradient"
         android:onClick="onButtonClick"
-        android:text="Create New Event"
+        android:text="My Databases"
+        android:textColor="#FFFFFFFF" />
+
+    <Button
+        android:id="@+id/button_previousDatabases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_myDatabases"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:text="Previous Databases"
         android:textColor="#FFFFFFFF" />
 
 </LinearLayout>

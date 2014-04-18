@@ -5,42 +5,39 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/button_linkDB"
+        android:id="@+id/createNewEventTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/btn_margin_horizontal"
         android:layout_marginRight="@dimen/btn_margin_horizontal"
         android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
         android:background="@drawable/gradient"
-        android:onClick="onButtonClick"
-        android:text="Link to Database"
-        android:textColor="#FFFFFFFF" />
-
-    <Button
-        android:id="@+id/button_inputCadets"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button_linkDB"
-        android:layout_marginLeft="@dimen/btn_margin_horizontal"
-        android:layout_marginRight="@dimen/btn_margin_horizontal"
-        android:layout_marginTop="@dimen/btn_margin_vertical"
-        android:background="@drawable/gradient"
-        android:onClick="onButtonClick"
-        android:text="Input/Edit Cadets"
-        android:textColor="#FFFFFFFF" />
-
-    <Button
-        android:id="@+id/button_createNewEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button_inputCadets"
-        android:layout_marginLeft="@dimen/btn_margin_horizontal"
-        android:layout_marginRight="@dimen/btn_margin_horizontal"
-        android:layout_marginTop="@dimen/btn_margin_vertical"
-        android:background="@drawable/gradient"
-        android:onClick="onButtonClick"
         android:text="Create New Event"
+        android:textColor="#FFFFFFFF" />
+
+    <EditText
+        android:id="@+id/inputNewEvent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:layout_below="@id/createNewEventTitle"
+        android:hint="01/01/2014"
+        android:inputType="number"
+        android:textColor="#00000000" />
+    
+    <Button
+        android:id="@+id/button_saveNewEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputNewEvent"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:textSize="14dp"
+        android:text="Save New Event"
         android:textColor="#FFFFFFFF" />
 
 </LinearLayout>

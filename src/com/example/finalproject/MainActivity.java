@@ -44,7 +44,8 @@ public class MainActivity extends Activity {
 			Toast.makeText(this, "Leaderboard button selected.", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.button_analytics:
-			Toast.makeText(this, "Analytics button selected.", Toast.LENGTH_SHORT).show();
+			i = new Intent(this, analyticsMain.class);
+			startActivity(i);
 			break;
 
 		default:

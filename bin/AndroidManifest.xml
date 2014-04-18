@@ -27,6 +27,17 @@
         <activity android:name="apftCalculator" />
         <activity android:name="eventSelectActivity" />
         <activity android:name="cadetSelectActivity" />
+        <activity android:name="lapCounter" />
+        <activity android:name="inputEventScoreActivity" />
+        <activity android:name="analyticsMain" />
+        <activity android:name="analyticsSelectCadet" />
+        <activity android:name="analyticsSelectEvent" />
+        <activity android:name="analyticsIndividualCadet" />
+        <activity android:name="analyticsIndividualEvent" />
+        <activity android:name="analyticsIndividualCadetEvent" />
+        <activity android:name="linkToDatabase" />
+        <activity android:name="inputEditCadet" />
+        <activity android:name="createNewEvent" />
     </application>
 
 </manifest>

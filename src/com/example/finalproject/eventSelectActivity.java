@@ -20,15 +20,15 @@ public class eventSelectActivity extends Activity {
 		switch(v.getId())
 		{
 		case R.id.button_pushups:
-			i = new Intent(this, cadetSelectActivity.class);
+			i = new Intent(this, inputEventScoreActivity.class);
 			startActivity(i);
 			break;
 		case R.id.button_situps:
-			i = new Intent(this, cadetSelectActivity.class);
+			i = new Intent(this, inputEventScoreActivity.class);
 			startActivity(i);
 			break;
 		case R.id.button_2milerun:
-			i = new Intent(this, cadetSelectActivity.class);
+			i = new Intent(this, lapCounter.class);
 			startActivity(i);
 			break;
 		default:

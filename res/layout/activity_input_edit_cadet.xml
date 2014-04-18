@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/button_linkDB"
+        android:id="@+id/button_inputNewCadet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -14,33 +14,20 @@
         android:layout_marginTop="@dimen/btn_margin_vertical"
         android:background="@drawable/gradient"
         android:onClick="onButtonClick"
-        android:text="Link to Database"
+        android:text="Input New Cadet"
         android:textColor="#FFFFFFFF" />
 
     <Button
-        android:id="@+id/button_inputCadets"
+        android:id="@+id/button_editDeleteCadet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_linkDB"
+        android:layout_below="@id/button_inputNewCadet"
         android:layout_marginLeft="@dimen/btn_margin_horizontal"
         android:layout_marginRight="@dimen/btn_margin_horizontal"
         android:layout_marginTop="@dimen/btn_margin_vertical"
         android:background="@drawable/gradient"
         android:onClick="onButtonClick"
-        android:text="Input/Edit Cadets"
-        android:textColor="#FFFFFFFF" />
-
-    <Button
-        android:id="@+id/button_createNewEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button_inputCadets"
-        android:layout_marginLeft="@dimen/btn_margin_horizontal"
-        android:layout_marginRight="@dimen/btn_margin_horizontal"
-        android:layout_marginTop="@dimen/btn_margin_vertical"
-        android:background="@drawable/gradient"
-        android:onClick="onButtonClick"
-        android:text="Create New Event"
+        android:text="Edit/Delete Cadet"
         android:textColor="#FFFFFFFF" />
 
 </LinearLayout>

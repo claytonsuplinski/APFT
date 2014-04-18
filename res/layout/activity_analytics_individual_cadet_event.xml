@@ -21,22 +21,6 @@
             android:layout_marginRight="@dimen/btn_margin_horizontal"
             android:layout_marginTop="@dimen/btn_margin_vertical" >
 
-            <TableRow
-                android:id="@+id/tableRow1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/btn_margin_vertical"
-                android:background="@drawable/gradient"
-                android:padding="5dip" >
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:gravity="center"
-                    android:text="Select Cadet"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#FFFFFFFF" />
-            </TableRow>
-
         </TableLayout>
     </LinearLayout>
 
