@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <Button
+        android:id="@+id/inputNewCadetTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:text="Link to Database"
+        android:textColor="#FFFFFFFF" />
+    
+	<EditText
+        android:id="@+id/databaseID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:background="#FFFFFFFF"
+        android:layout_below="@id/inputNewCadetTitle"
+        android:hint="Database ID"
+        android:inputType="number"
+        android:textColor="#00000000" />
+	
+	<EditText
+        android:id="@+id/databaseCode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:background="#FFFFFFFF"
+        android:layout_below="@id/databaseID"
+        android:hint="Code"
+        android:inputType="number"
+        android:textColor="#00000000" />
+	
+	<Button
+        android:id="@+id/button_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/databaseCode"
+        android:layout_marginLeft="@dimen/btn_margin_horizontal"
+        android:layout_marginRight="@dimen/btn_margin_horizontal"
+        android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:background="@drawable/gradient"
+        android:onClick="onButtonClick"
+        android:textSize="14dp"
+        android:text="Link"
+        android:textColor="#FFFFFFFF" />
+	
+	<TableLayout
+            
+            android:id="@+id/tableLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="@dimen/btn_margin_vertical"
+            android:layout_marginLeft="@dimen/btn_margin_horizontal"
+            android:layout_marginRight="@dimen/btn_margin_horizontal"
+            android:layout_marginTop="@dimen/btn_margin_vertical" >
+
+        </TableLayout>
+	
+
+</LinearLayout>

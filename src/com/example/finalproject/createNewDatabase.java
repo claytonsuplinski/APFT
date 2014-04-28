@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class inputEditCadet extends Activity {
+public class createNewDatabase extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_input_edit_cadet);
+		setContentView(R.layout.activity_create_new_database);
 	}
 	
 	public void onButtonClick(View v)
@@ -18,15 +18,11 @@ public class inputEditCadet extends Activity {
 		Intent i;
 		switch(v.getId())
 		{
-		case R.id.button_inputNewCadet:
-			i = new Intent(this, inputNewCadet.class);
+		/*case R.id.button_gradeAPFT:
+			i = new Intent(this, gradeApftActivity.class);
 			startActivity(i);
 			break;
-		case R.id.button_editDeleteCadet:
-			i = new Intent(this, editDeleteCadetSelect.class);
-			startActivity(i);
-			break;
-
+*/
 		default:
 		}
 	}

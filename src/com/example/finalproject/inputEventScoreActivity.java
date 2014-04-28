@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -83,6 +84,30 @@ public class inputEventScoreActivity extends Activity {
 		c1 = new TextView(this);
 		c1.setId(1);
 		c1.setText("Max: ");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.WHITE);
+		c1.setGravity(Gravity.CENTER);
+		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		EditText c2 = new EditText(this);
+		c2.setId(2);
+		c2.setText("Input Score");
+		c2.setTextSize(18);
+		c2.setTextColor(Color.BLACK);
+		c2.setGravity(Gravity.CENTER);
+		tr.setBackgroundResource(R.drawable.gradient2);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c2);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setId(3);
+		c1.setText("Submit");
 		c1.setTextSize(18);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
