@@ -134,6 +134,7 @@
         android:padding="5dip" 
         android:gravity="center">
         <TextView
+            android:id="@+id/calc_calculate"
             android:gravity="center"
             android:text="Calculate"
             android:textColor="#FFFFFFFF" />
