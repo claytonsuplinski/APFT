@@ -10,6 +10,16 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
+        <EditText
+            android:id="@+id/calc_age"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btn_margin_vertical"
+            android:background="#FFFFFFFF"
+            android:hint="Total Laps Needed"
+            android:inputType="number"
+            android:textColor="#000000" />
+
         <TableLayout
             android:id="@+id/tableLayout2"
             android:layout_width="fill_parent"
@@ -19,6 +29,8 @@
             android:layout_marginRight="@dimen/btn_margin_horizontal"
             android:layout_marginTop="@dimen/btn_margin_vertical" >
         </TableLayout>
+
+        
     </LinearLayout>
 
 </ScrollView>
