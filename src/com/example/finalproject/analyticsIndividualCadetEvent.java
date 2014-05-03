@@ -28,10 +28,18 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		i++;
 		c1.setOnClickListener(this);
 		c1.setText("Cadet Name");
-		c1.setTextSize(24);
+		c1.setTextSize(26);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
 		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		events.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(18);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		events.addView(tr);
@@ -42,10 +50,18 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		i++;
 		c1.setOnClickListener(this);
 		c1.setText("Raw Score");
-		c1.setTextSize(22);
+		c1.setTextSize(24);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
 		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		events.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(8);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		events.addView(tr);
@@ -94,14 +110,30 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(18);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		events.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
 		c1.setText("APFT Score");
-		c1.setTextSize(22);
+		c1.setTextSize(24);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
 		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		events.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(8);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		events.addView(tr);
@@ -164,14 +196,31 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(18);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		events.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
 		c1.setText("Lap Times");
 		c1.setTextSize(24);
+		c1.setPadding(0, 10, 0, 10);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
 		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		events.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(8);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		events.addView(tr);

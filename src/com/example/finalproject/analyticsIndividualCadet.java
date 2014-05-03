@@ -22,18 +22,65 @@ public class analyticsIndividualCadet extends Activity  implements View.OnClickL
 		TableLayout events = (TableLayout)findViewById(R.id.tableLayout1);
 		events.setStretchAllColumns(true);
 		events.bringToFront();
+		
+		TableRow tr =  new TableRow(this);
+		TextView c1 = new TextView(this);
+		c1.setText("Event");
+		c1.setTextSize(20);
+		c1.setTextColor(Color.WHITE);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient);
+		tr.addView(c1);
+		
+		c1 = new TextView(this);
+		c1.setText("Completed");
+		c1.setTextSize(20);
+		c1.setTextColor(Color.WHITE);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient);
+		tr.addView(c1);
+		
+		c1 = new TextView(this);
+		c1.setText("Score");
+		c1.setTextSize(20);
+		c1.setTextColor(Color.WHITE);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient);
+		tr.addView(c1);
+		tr.setGravity(Gravity.CENTER);
+		events.addView(tr);
+		
 		for(int i = 0; i < numEvents; i++){
-			TableRow tr =  new TableRow(this);
-			TextView c1 = new TextView(this);
+			tr =  new TableRow(this);
+			c1 = new TextView(this);
 			c1.setId(i);
+			c1.setText("01/01/2014");
+			c1.setPadding(0, 10, 0, 10);
 			c1.setOnClickListener(this);
-			c1.setText("Event" + (i+1)  + " | 3/3 | 300");
-			c1.setTextSize(24);
-			c1.setTextColor(Color.WHITE);
+			c1.setTextSize(16);
+			c1.setTextColor(Color.BLACK);
 			c1.setGravity(Gravity.CENTER);
-			tr.setBackgroundResource(R.drawable.gradient);
-			tr.setGravity(Gravity.CENTER);
+			c1.setBackgroundResource(R.drawable.gradient2);
 			tr.addView(c1);
+			
+			c1 = new TextView(this);
+			c1.setText("3/3");
+			c1.setOnClickListener(this);
+			c1.setTextSize(20);
+			c1.setTextColor(Color.BLACK);
+			c1.setGravity(Gravity.CENTER);
+			c1.setBackgroundResource(R.drawable.gradient2);
+			tr.addView(c1);
+			
+			c1 = new TextView(this);
+			c1.setText("300");
+			c1.setOnClickListener(this);
+			c1.setTextSize(20);
+			c1.setTextColor(Color.BLACK);
+			c1.setGravity(Gravity.CENTER);
+			c1.setBackgroundResource(R.drawable.gradient2);
+			tr.addView(c1);
+			tr.setGravity(Gravity.CENTER);
 			events.addView(tr);
 		}
 	}

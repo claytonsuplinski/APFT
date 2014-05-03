@@ -28,6 +28,7 @@ public class cadetSelectActivity extends Activity implements View.OnClickListene
 			c1.setId(i);
 			c1.setOnClickListener(this);
 			c1.setText("Cadet" + (i+1));
+			c1.setPadding(0, 10, 0, 10);
 			c1.setTextSize(24);
 			c1.setTextColor(Color.WHITE);
 			c1.setGravity(Gravity.CENTER);
@@ -40,9 +41,14 @@ public class cadetSelectActivity extends Activity implements View.OnClickListene
 	
 	@Override
 	public void onClick(View arg0) {
+		Intent intent = getIntent();
+		Bundle extras = intent.getExtras(); 
+		int tmp = extras.getInt("pushupsEqualsOne");
+		
 		int selectedEvent = arg0.getId();
-		Intent i = new Intent(this, eventSelectActivity.class);
-		//startActivity(i);
+		Intent i = new Intent(this, inputEventScoreActivity.class);
+		i.putExtra("pushupsEqualsOne",tmp);
+		startActivity(i);
 		//Remember to bundle cadet information so we update the correct cadet's event info.
 		//Use the selectedCadet index for this.
 	}

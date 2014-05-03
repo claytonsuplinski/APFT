@@ -22,7 +22,7 @@ public class lapCounter extends Activity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lap_counter);
 
-		int numCadets = 24;
+		int numCadets = 6;
 
 		TableLayout cadets = (TableLayout)findViewById(R.id.tableLayout2);
 		cadets.setStretchAllColumns(true);
@@ -35,8 +35,8 @@ public class lapCounter extends Activity implements View.OnClickListener {
 			c1.setId(i);
 			c1.setOnClickListener(this);
 			
-			c1.setText("Soldier " + (i+1) + ": 14");
-			c1.setTextSize(24);
+			c1.setText("Suplinski, Clayton" + "\n14");
+			c1.setTextSize(16);
 			c1.setTextColor(Color.WHITE);
 			c1.setGravity(Gravity.CENTER);
 			tr.addView(c1);
@@ -84,7 +84,6 @@ public class lapCounter extends Activity implements View.OnClickListener {
 		c1 = new TextView(this);
 		c1.setBackgroundResource(R.drawable.gradient2);		
 		c1.setId(TIMER_ID);
-		c1.setOnClickListener(this);
 		c1.setText("0:00");
 		c1.setTextSize(20);
 		c1.setTextColor(Color.BLACK);

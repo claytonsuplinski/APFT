@@ -30,14 +30,6 @@ public class linkToDatabase extends Activity {
 			i = new Intent(this, myDatabases.class);
 			startActivity(i);
 			break;
-		case R.id.button_previousCodes:
-			i = new Intent(this, previousCodes.class);
-			startActivity(i);
-			break;
-		case R.id.button_copyPreviousCode:
-			i = new Intent(this, copyPreviousCodes.class);
-			startActivity(i);
-			break;
 
 		default:
 		}
