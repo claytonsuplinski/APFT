@@ -30,6 +30,7 @@ public class myDatabases extends Activity implements View.OnClickListener {
 			c1.setId(i);
 			c1.setOnClickListener(this);
 			c1.setText("Database " + dbList.get(i).get(0));
+			c1.setPadding(0, 10, 0, 10);
 			c1.setTextSize(24);
 			c1.setTextColor(Color.WHITE);
 			c1.setGravity(Gravity.CENTER);
