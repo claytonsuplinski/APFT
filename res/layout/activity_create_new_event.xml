@@ -23,8 +23,8 @@
         android:background="#FFFFFFFF"
         android:layout_below="@id/createNewEventTitle"
         android:hint="01/01/2014"
-        android:inputType="number"
-        android:textColor="#00000000" />
+        android:inputType="text"
+        android:textColor="#000000" />
     
     <Button
         android:id="@+id/button_saveNewEvent"

@@ -25,7 +25,7 @@
         android:layout_below="@id/inputNewCadetTitle"
         android:hint="Database ID"
         android:inputType="text"
-        android:textColor="#00000000" />
+        android:textColor="#000000" />
 	
 	<EditText
         android:id="@+id/databaseCode"
@@ -36,7 +36,7 @@
         android:layout_below="@id/databaseID"
         android:hint="Code"
         android:inputType="text"
-        android:textColor="#00000000" />
+        android:textColor="#000000" />
 	
 	<Button
         android:id="@+id/button_link"

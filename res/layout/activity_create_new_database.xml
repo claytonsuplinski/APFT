@@ -24,14 +24,47 @@
         android:background="#FFFFFFFF"
         android:layout_below="@id/inputNewCadetTitle"
         android:hint="Database Name"
-        android:inputType="number"
-        android:textColor="#00000000" />
+        android:inputType="text"
+        android:textColor="#000000" />
+	
+	<EditText
+        android:id="@+id/databaseUser"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:background="#FFFFFFFF"
+        android:layout_below="@id/databaseName"
+        android:hint="User Code"
+        android:inputType="text"
+        android:textColor="#000000" />
+	
+	<EditText
+        android:id="@+id/databaseGrader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:background="#FFFFFFFF"
+        android:layout_below="@id/databaseUser"
+        android:hint="Grader Code"
+        android:inputType="text"
+        android:textColor="#000000" />
+	
+	<EditText
+        android:id="@+id/databaseAdmin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:background="#FFFFFFFF"
+        android:layout_below="@id/databaseGrader"
+        android:hint="Admin Code"
+        android:inputType="text"
+        android:textColor="#000000" />
 	
 	<Button
         android:id="@+id/button_createDatabase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/databaseName"
+        android:layout_below="@id/databaseAdmin"
         android:layout_marginLeft="@dimen/btn_margin_horizontal"
         android:layout_marginRight="@dimen/btn_margin_horizontal"
         android:background="@drawable/gradient"

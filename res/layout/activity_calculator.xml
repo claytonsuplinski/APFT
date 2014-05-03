@@ -41,7 +41,7 @@
             android:hint="18"
             android:inputType="number"
             android:background="#FFFFFFFF"
-            android:textColor="#00000000"/>
+            android:textColor="#000000"/>
     </TableRow>
     
     <TableRow
@@ -61,7 +61,7 @@
             android:hint="M"
             android:inputType="text"
             android:background="#FFFFFFFF"
-            android:textColor="#00000000"/>
+            android:textColor="#000000"/>
     </TableRow>
     
     <TableRow
@@ -81,7 +81,7 @@
             android:hint="30"
             android:inputType="number"
             android:background="#FFFFFFFF"
-            android:textColor="#00000000"/>
+            android:textColor="#000000"/>
     </TableRow>
     
     <TableRow
@@ -101,7 +101,7 @@
             android:hint="40"
             android:inputType="number"
             android:background="#FFFFFFFF"
-            android:textColor="#00000000"/>
+            android:textColor="#000000"/>
     </TableRow>
     
     <TableRow
@@ -121,7 +121,7 @@
             android:hint="100"
             android:inputType="number"
             android:background="#FFFFFFFF"
-            android:textColor="#00000000"/>
+            android:textColor="#000000"/>
     </TableRow>
     
     <TableRow
