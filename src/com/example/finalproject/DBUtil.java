@@ -32,20 +32,11 @@ public class DBUtil {
 		for(int i = 1; i <= db.getInt("cdtNum"); i++){
 			deleteCdt(dbId, db.getString("cdt" + Integer.toString(i) + "Id"));
 		}
-		//then kill db
-		try {
-			db.delete();
-		} catch (ParseException e) {
-			System.out.println("Failed to kill db");
-			return false;
-		}
-		
-		//then update dblist db count
+		//now null the entry in dblist
 		ParseObject dbList = null;
 		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("DBList");
 		try {
 			dbList = query2.get(dbListID);
-			System.out.println("got here 1");
 		} catch (ParseException e) {
 			//Failed to get DBList TODO:what does this even mean, no connectivity?
 			System.out.println("ParseException querying for dbList");
@@ -55,15 +46,59 @@ public class DBUtil {
 			System.out.println("DBList is null");
 			return false;//TODO: sactuall handle this
 		}
-		int dbnum = dbList.getInt("dbNum");
-		dbList.put("dbNum", dbnum-1);
+		int dbNum = dbList.getInt("dbNum");
+		if(dbNum != 0){
+			for(int i = 1; i <= dbNum; i++){//stored as name then id
+				String id = dbList.getString("db" + Integer.toString(i) + "Id");
+				if(id != null){
+					if(id.equals(dbId)){
+						dbList.put("db" + Integer.toString(i) + "Id", "null");
+						dbList.put("db" + Integer.toString(i) + "Name", "null");
+					}
+				}
+			}
+		}
 		try {
-			db.save();
+			dbList.save();
+		} catch (ParseException e1) {
+			System.out.println("Failed to write dbList");
+		}
+		//then finally kill db
+		try {
+			db.delete();
 		} catch (ParseException e) {
-			//failed to write change
+			System.out.println("Failed to kill db");
 			return false;
 		}
 		return true;
+	}
+	
+	public static ArrayList<String> getDbInfo(String dbId){
+		ArrayList<String> ret = new ArrayList<String>();
+		//first load db
+		ParseObject db = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
+		try {
+			db = query.get(dbId);
+			System.out.println("got here 55656");
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for dbId fffffffff?");
+			return ret;
+		}
+		if(db == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return ret;
+		}
+		//db loaded
+		ret.add(db.getString("name"));
+		ret.add(dbId);
+		System.out.println("KERPOWWW: " + db.getString("objectId"));
+		ret.add(db.getString("adminCode"));
+		ret.add(db.getString("userCode"));
+		ret.add(db.getString("graderCode"));
+		ret.add(db.getString("updatedAt"));
+		return ret;
 	}
 	
 	public static ArrayList<ArrayList<String>> getListDb(){
@@ -88,16 +123,21 @@ public class DBUtil {
 		System.out.println("getting dbnum");
 		if(dbNum != 0){
 			for(int i = 1; i <= dbNum; i++){//stored as name then id
-				ArrayList<String> ret1 = new ArrayList<String>();
-				ret1.add(dbList.getString("db" + Integer.toString(i) + "Name"));
-				ret1.add(dbList.getString("db" + Integer.toString(i) + "Id"));
-				ret.add(ret1);
+				String name = dbList.getString("db" + Integer.toString(i) + "Name");
+				if(name != null){
+					if(name.length() > 0 && !(name.equalsIgnoreCase("null"))){
+						ArrayList<String> ret1 = new ArrayList<String>();
+						ret1.add(dbList.getString("db" + Integer.toString(i) + "Name"));
+						ret1.add(dbList.getString("db" + Integer.toString(i) + "Id"));
+						ret.add(ret1);
+					}
+				}
 			}
 		}
 		return ret;
 	}
 	
-	public static ArrayList<String> cdtList(String dbId){
+	public static ArrayList<ArrayList<String>> cdtList(String dbId){
 		ParseObject db = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
 		try {
@@ -113,17 +153,52 @@ public class DBUtil {
 			return null;
 		}
 		//got db, now get list of cdt
-		ArrayList<String> ret = new ArrayList<String>();
+		ArrayList<ArrayList<String>> ret = new ArrayList<ArrayList<String>>();
 		for(int i = 1; i <= db.getInt("cdtNum"); i++){
 			if(!db.getString("cdt" + Integer.toString(i) + "Id").equals("null")){
-				ret.add(db.getString("cdt" + Integer.toString(i)));
+				ArrayList<String> ret1 = new ArrayList<String>();
+				//ret1.add(db.getString("cdt" + Integer.toString(i)));
+				ParseObject cd = null;
+				ParseQuery<ParseObject> cdq = ParseQuery.getQuery("Cadet");
+				try {
+					cd = cdq.get(db.getString("cdt" + Integer.toString(i) + "Id"));
+					ret1.add(cd.getString("name"));
+					ret1.add(db.getString("cdt" + Integer.toString(i) + "Id"));
+					ret.add(ret1);
+				} catch (ParseException e) {
+					System.out.println("Failed to query the cdt with that id");
+				}
+
 			}
 		}
 		return ret;
 	}
 	
-	public static boolean editCdt(String dbId, String cdtId, String prop){
-		return false;
+	public static boolean editCdt(String cdtId, String name, String dob, String gender){
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return false;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return false;
+		}
+		//have cdt now edit
+		cdt.put("name", name);
+		cdt.put("dob", dob);
+		cdt.put("gender", gender);
+		try {
+			cdt.save();
+		} catch (ParseException e) {
+			System.out.println("Failed to write cdt edits");
+			return false;
+		}
+		return true;
 	}
 	
 	public static String getDbName(String dbId){
@@ -233,6 +308,29 @@ public class DBUtil {
 		return true;
 	}
 	
+	public static ArrayList<String> getCdtInfo(String cdtId){
+		ArrayList<String> ret = new ArrayList<String>();
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+			System.out.println("got here 1");
+		} catch (ParseException e) {
+			//Failed to get dbId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for dbId");
+			return ret;
+		}
+		if(cdt == null){//DBList is null. Not connected to internet?
+			System.out.println("DBList is null");
+			return ret;//TODO: sactuall handle this
+		}
+		ret.add(cdt.getString("name"));
+		ret.add(cdt.getString("dob"));
+		ret.add(cdt.getString("gender"));
+		
+		return ret;
+	}
+	
 	public static boolean addCdt(String dbId, String name, String dob, String gender){
 		//first get the dblist
 		ParseObject db = null;
@@ -277,8 +375,6 @@ public class DBUtil {
 	
 	//makes a DB with name dbName and password pass. returns true on success
 	public static boolean makeDB(String dbName, String adminCode, String graderCode, String userCode){
-		//Parse.initialize(context, appId, clientKey);
-		
 		//first get the dblist
 		ParseObject dbList = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("DBList");
