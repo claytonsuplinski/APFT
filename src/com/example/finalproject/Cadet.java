@@ -33,6 +33,7 @@ public class Cadet {
 		pushUps = p;
 		sitUps = s;
 		runTime = r;
+		System.out.println("Cadet made with " + name + " " + age + " " + gender + " " +p+" " +r+" "+s);
 	}
 	//pass data as encoding for ease of passing through 
 	public Cadet(String encoding){
@@ -101,15 +102,15 @@ public class Cadet {
 	}
 	public int getSitUpScore(){
 		if(gender == Gender.male){
-			return getScore(age, getPushUps(), situpScoresMale, false);
+			return getScore(age, getSitUps(), situpScoresMale, false);
 		}
-		return getScore(age, getPushUps(), situpScoresFemale, false);
+		return getScore(age, getSitUps(), situpScoresFemale, false);
 	}
 	public int getRunScore(){
 		if(gender == Gender.male){
-			return getScore(age, getPushUps(), pushupScoresMale, true);
+			return getScore(age, getRunTime(), runtimeScoresMale, true);
 		}
-		return getScore(age, getPushUps(), pushupScoresFemale, true);
+		return getScore(age, getRunTime(), runtimeScoresFemale, true);
 	}
 	
 	//output encoding
@@ -168,18 +169,22 @@ public class Cadet {
 		}
 		int score = 0;
 		if(!run){
-			for(int i = 0; i < table.length; i+=11){
-				if(reps >= table[i]){
-					score = table[i + ageIndex];
+			score = table[11*reps + ageIndex];
+		}else{ //run
+			if(reps < 1300){
+				score = 100;
+			}else if(2455 < reps){
+				score = 0;
+			}else{
+				int ind = -1;
+				for(int i = 0; i < table.length; i+=11){
+					System.out.println("fuckkkk::::::: " + table[i]);
+					if(reps > table[i]){
+						System.out.println("fPOOOOOOOOOP");
+						ind = i;
+					}
 				}
-			}
-		}else{//run
-			boolean found = false;
-			for(int i = 0; i < table.length; i+=11){
-				if(reps <= table[i] && !found){
-					score = table[i + ageIndex];
-					found = true;
-				}
+				score = table[ind + ageIndex];
 			}
 		}
 		return score;
