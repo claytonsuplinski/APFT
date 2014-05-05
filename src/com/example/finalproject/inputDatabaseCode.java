@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class inputDatabaseCode extends Activity {
 	
@@ -59,21 +60,25 @@ public class inputDatabaseCode extends Activity {
 				     va.setAuth("admin");
 				     va.setId(id);
 				     va.setName(name);
+				     Toast.makeText(this, "Successfully connected.", Toast.LENGTH_SHORT).show();
 				}else if(auth.equalsIgnoreCase("grader")){
 					 varApplication va = (varApplication)getApplicationContext();
 				     va.setAuth("grader");
 				     va.setId(id);
 				     va.setName(name);
+				     Toast.makeText(this, "Successfully connected.", Toast.LENGTH_SHORT).show();
 				}else if(auth.equalsIgnoreCase("user")){
 					 varApplication va = (varApplication)getApplicationContext();
 				     va.setAuth("user");
 				     va.setId(id);
 				     va.setName(name);
+				     Toast.makeText(this, "Successfully connected.", Toast.LENGTH_SHORT).show();
 				}else{
 					 varApplication va = (varApplication)getApplicationContext();
 				     va.setAuth("null");
 				     va.setId("null");
 				     va.setName("null");
+				     Toast.makeText(this, "Failed to connect.", Toast.LENGTH_SHORT).show();
 				}
 				System.out.println("get here 5");
 			break;

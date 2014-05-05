@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class inputNewCadet extends Activity {
 	
@@ -29,8 +30,16 @@ public class inputNewCadet extends Activity {
 			varApplication va = (varApplication)getApplicationContext();
 			String id = va.getId();
 
-			DBUtil.addCdt(id, editL.getText().toString() + ", " + editF.getText().toString(), 
+			boolean success = DBUtil.addCdt(id, editL.getText().toString() + ", " + editF.getText().toString(), 
 					editD.getText().toString(), editG.getText().toString());
+			
+			if(success){
+				Toast.makeText(this, "Cadet successfully added.", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Toast.makeText(this, "Failed to add cadet.", Toast.LENGTH_SHORT).show();
+			}
+			
 
 			default:
 		}

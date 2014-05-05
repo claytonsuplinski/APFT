@@ -127,7 +127,7 @@
     <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient"
+        android:background="@drawable/gradient3"
         android:layout_marginTop="@dimen/btn_margin_vertical"
         android:layout_marginBottom="@dimen/btn_margin_vertical"
         android:onClick="onButtonClick"
@@ -137,7 +137,7 @@
             android:id="@+id/calc_calculate"
             android:gravity="center"
             android:text="Calculate"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="#000000" />
     </TableRow>
     
     <TableRow

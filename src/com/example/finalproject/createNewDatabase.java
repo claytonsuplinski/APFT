@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class createNewDatabase extends Activity {
 	
@@ -24,8 +25,13 @@ public class createNewDatabase extends Activity {
 			EditText admin = (EditText)findViewById(R.id.databaseAdmin);
 			EditText grader = (EditText)findViewById(R.id.databaseGrader);
 			EditText user = (EditText)findViewById(R.id.databaseUser);
-			DBUtil.makeDB(dbName.getText().toString(), admin.getText().toString(), grader.getText().toString(), user.getText().toString());
-			
+			boolean success = DBUtil.makeDB(dbName.getText().toString(), admin.getText().toString(), grader.getText().toString(), user.getText().toString());
+			if(success){
+				Toast.makeText(this, "Database successfully created.", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Toast.makeText(this, "Failed to create database.", Toast.LENGTH_SHORT).show();
+			}
 			break;
 
 		default:

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
  
 public class splashScreen extends Activity {
  
@@ -24,6 +25,7 @@ public class splashScreen extends Activity {
  
             @Override
             public void run() {
+            	
                 // This method will be executed once the timer is over
                 // Start your app main activity
                 Intent i = new Intent(splashScreen.this, MainActivity.class);

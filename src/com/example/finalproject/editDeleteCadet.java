@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class editDeleteCadet extends Activity {
 	
@@ -53,6 +54,11 @@ public class editDeleteCadet extends Activity {
 				varApplication va = (varApplication)getApplicationContext();
 				String dbId = va.getId();
 				DBUtil.deleteCdt(dbId, cdtID);
+				Toast.makeText(this, "Cadet successfully deleted.", Toast.LENGTH_SHORT).show();
+				
+				Intent i;
+				i = new Intent(this, MainActivity.class);
+				startActivity(i);
 			case R.id.button_saveCadet:
 				EditText editL = (EditText)findViewById(R.id.inputLastName);
 				EditText editF = (EditText)findViewById(R.id.inputFirstName);
@@ -63,6 +69,7 @@ public class editDeleteCadet extends Activity {
 				String dob = editD.getText().toString();
 				String gen = editG.getText().toString();
 				DBUtil.editCdt(cdtID, name, dob, gen);
+				Toast.makeText(this, "Cadet changes saved.", Toast.LENGTH_SHORT).show();
 			default:
 		}
 	}
