@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -16,6 +17,10 @@ public class inputEventScoreActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_input_event_score);
 		
+		Intent intent = getIntent();
+		Bundle extras = intent.getExtras(); 
+		int pushups = extras.getInt("pushupsEqualsOne");
+		
 		TableLayout cadets = (TableLayout)findViewById(R.id.tableLayout1);
 		cadets.setStretchAllColumns(true);
 		cadets.bringToFront();
@@ -23,8 +28,8 @@ public class inputEventScoreActivity extends Activity {
 		TableRow tr =  new TableRow(this);
 		TextView c1 = new TextView(this);
 		c1.setId(0);
-		c1.setText("Input Pushups/Situps");
-		c1.setTextSize(24);
+		c1.setText((pushups == 1 ? "Input Push-ups" : "Input Sit-ups"));
+		c1.setTextSize(26);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
 		tr.setBackgroundResource(R.drawable.gradient);
@@ -34,12 +39,28 @@ public class inputEventScoreActivity extends Activity {
 		
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(18);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
 		c1.setId(1);
 		c1.setText("Solider Name");
-		c1.setTextSize(20);
+		c1.setTextSize(22);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
 		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(8);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		cadets.addView(tr);
@@ -93,21 +114,37 @@ public class inputEventScoreActivity extends Activity {
 		cadets.addView(tr);
 		
 		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(18);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
 		EditText c2 = new EditText(this);
 		c2.setId(2);
 		c2.setText("Input Score");
 		c2.setTextSize(18);
 		c2.setTextColor(Color.BLACK);
 		c2.setGravity(Gravity.CENTER);
-		tr.setBackgroundResource(R.drawable.gradient2);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c2);
 		cadets.addView(tr);
 		
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(18);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
 		c1.setId(3);
 		c1.setText("Submit");
+		c1.setPadding(0, 10, 0, 10);
 		c1.setTextSize(18);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);

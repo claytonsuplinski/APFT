@@ -58,9 +58,9 @@ public class individualDatabaseInfo extends Activity implements View.OnClickList
 		i++;
 		c1.setText("Database ID: " + info.get(1));
 		c1.setTextSize(18);
-		c1.setTextColor(Color.WHITE);
+		c1.setTextColor(Color.BLACK);
 		c1.setGravity(Gravity.CENTER);
-		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setBackgroundResource(R.drawable.gradient2);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		events.addView(tr);
@@ -80,9 +80,9 @@ public class individualDatabaseInfo extends Activity implements View.OnClickList
 		c1.setOnClickListener(this);
 		c1.setText("User Code: " + info.get(3));
 		c1.setTextSize(22);
-		c1.setTextColor(Color.WHITE);
+		c1.setTextColor(Color.BLACK);
 		c1.setGravity(Gravity.CENTER);
-		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setBackgroundResource(R.drawable.gradient2);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		events.addView(tr);
@@ -94,9 +94,9 @@ public class individualDatabaseInfo extends Activity implements View.OnClickList
 		c1.setOnClickListener(this);
 		c1.setText("Grader Code: " + info.get(4));
 		c1.setTextSize(22);
-		c1.setTextColor(Color.WHITE);
+		c1.setTextColor(Color.BLACK);
 		c1.setGravity(Gravity.CENTER);
-		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setBackgroundResource(R.drawable.gradient2);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		events.addView(tr);
@@ -108,9 +108,9 @@ public class individualDatabaseInfo extends Activity implements View.OnClickList
 		c1.setOnClickListener(this);
 		c1.setText("Admin Code: " + info.get(2));
 		c1.setTextSize(22);
-		c1.setTextColor(Color.WHITE);
+		c1.setTextColor(Color.BLACK);
 		c1.setGravity(Gravity.CENTER);
-		tr.setBackgroundResource(R.drawable.gradient);
+		tr.setBackgroundResource(R.drawable.gradient2);
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		events.addView(tr);
