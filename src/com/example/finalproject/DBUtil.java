@@ -73,6 +73,61 @@ public class DBUtil {
 		return true;
 	}
 	
+	public static ArrayList<String> getEventList(String dbId){
+		ArrayList<String> ret = new ArrayList<String>();
+		//first load db
+		ParseObject db = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
+		try {
+			db = query.get(dbId);
+			System.out.println("got here 55656");
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for dbId fffffffff?");
+			return ret;
+		}
+		if(db == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return ret;
+		}
+		int eNum = db.getInt("eventNum");
+		for(int i = 1; i <= eNum; i++){
+			ret.add(db.getString("event" + i));
+		}
+		return ret;
+	}
+	
+	public static boolean addEvent(String dbId, String date){
+		System.out.println("adding new event: " + date);
+		ArrayList<String> ret = new ArrayList<String>();
+		//first load db
+		ParseObject db = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
+		try {
+			db = query.get(dbId);
+			System.out.println("got here 55656");
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for dbId fffffffff?");
+			return false;
+		}
+		if(db == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return false;
+		}
+		int eNum = db.getInt("eventNum");
+		db.put("event" + (eNum+1), date);
+		db.put("eventNum", eNum+1);
+		try {
+			db.save();
+		} catch (ParseException e) {
+			System.out.println("failed to write new event to database");
+			return false;
+		}
+		System.out.println("Success writing event: " + date);
+		return true;
+	}
+	
 	public static ArrayList<String> getDbInfo(String dbId){
 		ArrayList<String> ret = new ArrayList<String>();
 		//first load db
