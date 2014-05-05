@@ -16,9 +16,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:debuggable="true" >
         <activity
-            android:name="com.example.finalproject.MainActivity"
+            android:name="com.example.finalproject.splashScreen"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,6 +54,7 @@
         <activity android:name="leaderboardSelectEvent" />
         <activity android:name="leaderboard" />
         <activity android:name="individualDatabaseInfo" />
+        <activity android:name="MainActivity" />
     </application>
 
 </manifest>

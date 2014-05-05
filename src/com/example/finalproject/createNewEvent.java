@@ -1,12 +1,11 @@
 package com.example.finalproject;
 
-import com.parse.ParseException;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import com.parse.ParseException;
 
 public class createNewEvent extends Activity {
 

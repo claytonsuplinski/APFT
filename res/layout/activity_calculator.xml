@@ -118,7 +118,7 @@
             android:id="@+id/calc_runtime"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="100"
+            android:hint="720    "
             android:inputType="number"
             android:background="#FFFFFFFF"
             android:textColor="#000000"/>
@@ -131,19 +131,20 @@
         android:layout_marginTop="@dimen/btn_margin_vertical"
         android:layout_marginBottom="@dimen/btn_margin_vertical"
         android:onClick="onButtonClick"
-        android:padding="5dip" 
+        android:padding="10dip" 
         android:gravity="center">
         <TextView
             android:id="@+id/calc_calculate"
             android:gravity="center"
             android:text="Calculate"
-            android:textColor="#000000" />
+            android:textSize="20sp"
+            android:textColor="#FFFFFF" />
     </TableRow>
     
     <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient"
+        android:background="@drawable/gradient2"
         android:onClick="onButtonClick"
         android:padding="5dip" >
 
@@ -151,12 +152,12 @@
             android:gravity="center"
             android:text="Your score:"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="#000000" />
         <TextView
             android:id="@+id/calc_score"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="#000000" />
     </TableRow>
 
 </TableLayout>
