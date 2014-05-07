@@ -80,6 +80,109 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 			tr.setGravity(Gravity.CENTER);
 			cadets.addView(tr);
 		}
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(18);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("Averages");
+		c1.setTextSize(20);
+		c1.setTextColor(Color.WHITE);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient);
+		tr.addView(c1);
+		tr.setGravity(Gravity.CENTER);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("Push-up Score: ");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.BLACK);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient2);
+		tr.addView(c1);
+		
+		c1 = new TextView(this);
+		c1.setText("87");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.BLACK);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient2);
+		tr.addView(c1);
+		tr.setGravity(Gravity.CENTER);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("Sit-up Score: ");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.BLACK);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient2);
+		tr.addView(c1);
+		
+		c1 = new TextView(this);
+		c1.setText("65");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.BLACK);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient2);
+		tr.addView(c1);
+		tr.setGravity(Gravity.CENTER);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("Raw Score: ");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.BLACK);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient2);
+		tr.addView(c1);
+		
+		c1 = new TextView(this);
+		c1.setText("88");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.BLACK);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient2);
+		tr.addView(c1);
+		tr.setGravity(Gravity.CENTER);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("Overall: ");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.BLACK);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient2);
+		tr.addView(c1);
+		
+		c1 = new TextView(this);
+		c1.setText("230");
+		c1.setTextSize(18);
+		c1.setTextColor(Color.BLACK);
+		c1.setGravity(Gravity.CENTER);
+		c1.setBackgroundResource(R.drawable.gradient2);
+		tr.addView(c1);
+		tr.setGravity(Gravity.CENTER);
+		cadets.addView(tr);
+		
+		tr =  new TableRow(this);
+		c1 = new TextView(this);
+		c1.setText("\n");
+		c1.setTextSize(18);
+		tr.setGravity(Gravity.CENTER);
+		tr.addView(c1);
+		cadets.addView(tr);
 	}
 	
 	@Override
