@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:background="#FFFFFFFF"
         android:layout_below="@id/createNewEventTitle"
-        android:hint="01_29_2014"
+        android:hint="01/29/2014"
         android:inputType="text"
         android:textColor="#000000" />
     

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 
@@ -23,7 +24,13 @@ public class createNewEvent extends Activity {
 			EditText editDate = (EditText)findViewById(R.id.inputNewEvent);
 			varApplication va = (varApplication)getApplicationContext();
 			String dbId = va.getId();
-			DBUtil.addEvent(dbId, editDate.getText().toString());
+			boolean success = DBUtil.addEvent(dbId, editDate.getText().toString());
+			if(success){
+				Toast.makeText(this, "New event successfully created.", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Toast.makeText(this, "Failed to create new event.", Toast.LENGTH_SHORT).show();
+			}
 		default:
 		}
 	}
