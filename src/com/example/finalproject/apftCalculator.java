@@ -37,7 +37,7 @@ public class apftCalculator extends Activity {
 
 			TextView cal = (TextView)findViewById(R.id.calc_score);
 			System.out.println("score: " + cdt.getScore());
-			cal.setText("Score " + cdt.getScore());
+			cal.setText("" + cdt.getScore());
 
 		default:
 		}
