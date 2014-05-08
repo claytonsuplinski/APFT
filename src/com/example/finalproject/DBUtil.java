@@ -386,6 +386,155 @@ public class DBUtil {
 		return ret;
 	}
 	
+	public static boolean addCdtEvent(String cdtId, String date){
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return false;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return false;
+		}
+		//have cdt now edit
+		int numEvent = cdt.getInt("eventNum");
+		cdt.put("eventNum", numEvent+1);
+		cdt.put("event" + (numEvent+1), date);
+		cdt.put("event" + (numEvent+1) + "PU", 0);
+		cdt.put("event" + (numEvent+1) + "SU", 0);
+		cdt.put("event" + (numEvent+1) + "RU", 0);
+		cdt.put("event" + (numEvent+1) + "LapNum", 0);
+		try {
+			cdt.save();
+		} catch (ParseException e) {
+			System.out.println("Failed to write cdt edits");
+			return false;
+		}
+		return true;
+	}
+	
+	//return eventNum corresponding to date, or 0 if its not there
+	public static int cdtGetEventNum(String cdtId, String date){
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return -1;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return -1;
+		}
+		if(cdt.getInt("eventNum") == 0){
+			return 0;
+		}
+		//now find event
+		for(int i = 1; i <= cdt.getInt("eventNum"); i++){
+			if(cdt.getString("event"+i).equalsIgnoreCase(date)){
+				return i;
+			}
+		}
+		return 0;
+	}
+	
+	public static boolean cdtAddPU(String cdtId, int eventNum, int score, String date){
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return false;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return false;
+		}
+		//have cdt now edit
+		if(eventNum == 0){//this event doesnt exist, so add new one
+			int e = cdt.getInt("eventNum");
+			cdt.put("eventNum", e+1);
+			cdt.put("event"+(e+1)+"PU", score);
+			cdt.put("event"+(e+1), date);
+		}else{
+			cdt.put("event"+eventNum+"PU", score);
+		}
+		try {
+			cdt.save();
+		} catch (ParseException e) {
+			System.out.println("Failed to write cdt edits");
+			return false;
+		}
+		return true;
+	}
+	public static boolean cdtAddSU(String cdtId, int eventNum, int score, String date){
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return false;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return false;
+		}
+		//have cdt now edit
+		if(eventNum == 0){//this event doesnt exist, so add new one
+			int e = cdt.getInt("eventNum");
+			cdt.put("eventNum", e+1);
+			cdt.put("event"+(e+1)+"SU", score);
+			cdt.put("event"+(e+1), date);
+		}else{
+			cdt.put("event"+eventNum+"SU", score);
+		}
+		try {
+			cdt.save();
+		} catch (ParseException e) {
+			System.out.println("Failed to write cdt edits");
+			return false;
+		}
+		return true;
+	}
+	public static boolean cdtAddRU(String cdtId, int eventNum, int time, ArrayList<Integer> laps){
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return false;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return false;
+		}
+		//have cdt now edit
+		int lapNum = laps.size();
+		cdt.put("event"+eventNum+"LapNum", lapNum);
+		for(int i = 0; i < lapNum; i++){
+			cdt.put("event"+eventNum+"Lap"+i, laps.get(i).intValue());
+		}
+		cdt.add("event"+eventNum+"RU", time);
+		try {
+			cdt.save();
+		} catch (ParseException e) {
+			System.out.println("Failed to write cdt edits");
+			return false;
+		}
+		return true;
+	}
 	public static boolean addCdt(String dbId, String name, String dob, String gender){
 		//first get the dblist
 		ParseObject db = null;
@@ -408,6 +557,7 @@ public class DBUtil {
 		cdt.put("name", name);
 		cdt.put("gender", gender);
 		cdt.put("dob", dob);
+		cdt.put("eventNum", 0);
 		try {
 			cdt.save();
 		} catch (ParseException e) {

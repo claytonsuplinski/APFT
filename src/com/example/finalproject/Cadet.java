@@ -1,6 +1,8 @@
 package com.example.finalproject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +36,29 @@ public class Cadet {
 		sitUps = s;
 		runTime = r;
 		System.out.println("Cadet made with " + name + " " + age + " " + gender + " " +p+" " +r+" "+s);
+	}
+	public Cadet(String name, int age, String gender){
+		this.name = name;
+		this.age = age;
+		this.gender = Gender.female;
+		if(gender.equalsIgnoreCase("M")){
+			this.gender = Gender.male;
+		}
+	}
+	public static int dobToAge(String dob){
+		Calendar cal = Calendar.getInstance();
+		String[] split = dob.split("/");
+		Calendar curr = Calendar.getInstance();
+		curr.set(Integer.parseInt(split[2]), Integer.parseInt(split[1]), Integer.parseInt(split[0]));
+		
+		cal.getTimeInMillis();
+		double secs = (curr.getTimeInMillis() - cal.getTimeInMillis());
+		double days = secs/(1000*60*60*24);
+		System.out.println("TIMMMEEEEEEEE:");
+		System.out.println((curr.getTimeInMillis() - cal.getTimeInMillis()));
+		System.out.println(days);
+		System.out.println(days/365);
+		return (-1)*((int)Math.floor(days/365));
 	}
 	//pass data as encoding for ease of passing through 
 	public Cadet(String encoding){
@@ -171,7 +196,9 @@ public class Cadet {
 		if(!run){
 			score = table[11*reps + ageIndex];
 		}else{ //run
-			if(reps < 1300){
+			if(reps == 0){
+				score = 0;
+			}else if(reps < 1300){
 				score = 100;
 			}else if(2455 < reps){
 				score = 0;

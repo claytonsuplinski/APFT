@@ -17,36 +17,18 @@ public class apftCalculator extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
-		
-		/*EditText editAge = (EditText)findViewById(R.id.calc_age);
-		EditText editGen = (EditText)findViewById(R.id.calc_gender);
-		EditText editPU = (EditText)findViewById(R.id.calc_pushups);
-		EditText editSU = (EditText)findViewById(R.id.calc_situps);
-		EditText editRU = (EditText)findViewById(R.id.calc_runtime);
-		
-		Button calculate = (Button)findViewById(R.id.calc_calculate);
-		
-		//setup listener
-		calculate.setOnClickListener(
-	        new View.OnClickListener()
-	        {
-	            public void onClick(View view)
-	            {
-	                
-	            }
-	        });*/
 	}
 	public void onButtonClick(View v) throws ParseException
 	{
 		switch(v.getId())
 		{
 		case R.id.calc_calculate:
+			System.out.println("I GET CALLED MAYBEEEE?");
 			EditText editAge = (EditText)findViewById(R.id.calc_age);
 			EditText editGen = (EditText)findViewById(R.id.calc_gender);
 			EditText editPU = (EditText)findViewById(R.id.calc_pushups);
 			EditText editSU = (EditText)findViewById(R.id.calc_situps);
 			EditText editRU = (EditText)findViewById(R.id.calc_runtime);
-
 			Cadet cdt = new Cadet("joe", Integer.parseInt(editAge.getText().toString()),
 					editGen.getText().toString(),
 					Integer.parseInt(editPU.getText().toString()),
@@ -54,7 +36,7 @@ public class apftCalculator extends Activity {
 					Integer.parseInt(editRU.getText().toString()));
 
 			TextView cal = (TextView)findViewById(R.id.calc_score);
-
+			System.out.println("score: " + cdt.getScore());
 			cal.setText("Score " + cdt.getScore());
 
 		default:

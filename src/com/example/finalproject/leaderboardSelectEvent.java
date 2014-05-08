@@ -1,5 +1,7 @@
 package com.example.finalproject;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,12 +14,17 @@ import android.widget.TextView;
 
 public class leaderboardSelectEvent extends Activity implements View.OnClickListener{
 	
+	ArrayList<String> eventList;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_grade);
+		varApplication va = (varApplication)getApplicationContext();
+		String dbId = va.getId();
+		eventList = DBUtil.getEventList(dbId);
 		
-		int numEvents = 15;
+		int numEvents = eventList.size();
 
 		TableLayout events = (TableLayout)findViewById(R.id.tableLayout1);
 		events.setStretchAllColumns(true);
@@ -27,9 +34,8 @@ public class leaderboardSelectEvent extends Activity implements View.OnClickList
 			TextView c1 = new TextView(this);
 			c1.setId(i);
 			c1.setOnClickListener(this);
-			c1.setText("Event" + (i+1));
+			c1.setText("Event" + eventList.get(i));
 			c1.setTextSize(24);
-			c1.setPadding(0, 10, 0, 10);
 			c1.setTextColor(Color.WHITE);
 			c1.setGravity(Gravity.CENTER);
 			tr.setBackgroundResource(R.drawable.gradient);
@@ -43,6 +49,7 @@ public class leaderboardSelectEvent extends Activity implements View.OnClickList
 	public void onClick(View arg0) {
 		int selectedEvent = arg0.getId();
 		Intent i = new Intent(this, leaderboard.class);
+		i.putExtra("event", eventList.get(selectedEvent));
 		startActivity(i);
 	}
 

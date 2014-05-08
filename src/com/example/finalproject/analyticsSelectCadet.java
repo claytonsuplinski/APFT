@@ -1,5 +1,7 @@
 package com.example.finalproject;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,12 +14,15 @@ import android.widget.TextView;
 
 public class analyticsSelectCadet extends Activity implements View.OnClickListener {
 
+	ArrayList<ArrayList<String>> cdtList;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cadet_select);
-		
-		int numCadets = 22;
+		varApplication va = (varApplication)getApplicationContext();
+		String dbId = va.getId();
+		cdtList = DBUtil.cdtList(dbId);
+		int numCadets = cdtList.size();
 
 		TableLayout cadets = (TableLayout)findViewById(R.id.tableLayout1);
 		cadets.setStretchAllColumns(true);
@@ -27,7 +32,7 @@ public class analyticsSelectCadet extends Activity implements View.OnClickListen
 			TextView c1 = new TextView(this);
 			c1.setId(i);
 			c1.setOnClickListener(this);
-			c1.setText("Cadet" + (i+1));
+			c1.setText("Cadet" + cdtList.get(i).get(0));
 			c1.setPadding(0, 10, 0, 10);
 			c1.setTextSize(24);
 			c1.setTextColor(Color.WHITE);
@@ -43,6 +48,7 @@ public class analyticsSelectCadet extends Activity implements View.OnClickListen
 	public void onClick(View arg0) {
 		int selectedEvent = arg0.getId();
 		Intent i = new Intent(this, analyticsIndividualCadet.class);
+		i.putExtra("cdtId", cdtList.get(selectedEvent).get(1));
 		startActivity(i);
 	}
 	

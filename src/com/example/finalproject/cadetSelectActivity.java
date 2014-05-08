@@ -1,5 +1,7 @@
 package com.example.finalproject;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,13 +14,17 @@ import android.widget.TextView;
 
 public class cadetSelectActivity extends Activity implements View.OnClickListener {
 
+	ArrayList<ArrayList<String>> cdts;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cadet_select);
-
-		int numCadets = 22;
-
+		varApplication va = (varApplication)getApplicationContext();
+		String dbId = va.getId();
+		cdts = DBUtil.cdtList(dbId);
+		int numCadets = cdts.size();
+		
 		TableLayout cadets = (TableLayout)findViewById(R.id.tableLayout1);
 		cadets.setStretchAllColumns(true);
 		cadets.bringToFront();
@@ -27,7 +33,7 @@ public class cadetSelectActivity extends Activity implements View.OnClickListene
 			TextView c1 = new TextView(this);
 			c1.setId(i);
 			c1.setOnClickListener(this);
-			c1.setText("Cadet" + (i+1));
+			c1.setText("Cadet " + cdts.get(i).get(0));
 			c1.setPadding(0, 10, 0, 10);
 			c1.setTextSize(24);
 			c1.setTextColor(Color.WHITE);
@@ -43,11 +49,13 @@ public class cadetSelectActivity extends Activity implements View.OnClickListene
 	public void onClick(View arg0) {
 		Intent intent = getIntent();
 		Bundle extras = intent.getExtras(); 
-		int tmp = extras.getInt("pushupsEqualsOne");
-		
 		int selectedEvent = arg0.getId();
+		int tmp = extras.getInt("pushupsEqualsOne");
 		Intent i = new Intent(this, inputEventScoreActivity.class);
+		System.out.println("YOOOOOOOOOOOO: " +tmp + " : " + cdts.get(selectedEvent) + " : " +  extras.getString("event"));
 		i.putExtra("pushupsEqualsOne",tmp);
+		i.putExtra("cdtId", cdts.get(selectedEvent).get(1));
+		i.putExtra("event", extras.getString("event"));
 		startActivity(i);
 		//Remember to bundle cadet information so we update the correct cadet's event info.
 		//Use the selectedCadet index for this.
