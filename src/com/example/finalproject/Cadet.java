@@ -45,6 +45,16 @@ public class Cadet {
 			this.gender = Gender.male;
 		}
 	}
+	public static int sToA(int sec){
+		int s = sec % 60;
+		int m = (sec-s)/60;
+		return (m*100 + s);//...
+	}
+	public static int aToS(int a){
+		int s = a % 100;
+		int m = (a-s)/100;
+		return (m*60) + s;
+	}
 	public static int dobToAge(String dob){
 		Calendar cal = Calendar.getInstance();
 		String[] split = dob.split("/");
@@ -58,7 +68,7 @@ public class Cadet {
 		System.out.println((curr.getTimeInMillis() - cal.getTimeInMillis()));
 		System.out.println(days);
 		System.out.println(days/365);
-		return (-1)*((int)Math.floor(days/365));
+		return (-1)*((int)Math.ceil(days/365));
 	}
 	//pass data as encoding for ease of passing through 
 	public Cadet(String encoding){
@@ -194,6 +204,12 @@ public class Cadet {
 		}
 		int score = 0;
 		if(!run){
+			if(11*reps + ageIndex > table.length){
+				return 100;
+			}
+			if(11*reps + ageIndex < 0){
+				return 0;
+			}
 			score = table[11*reps + ageIndex];
 		}else{ //run
 			if(reps == 0){
@@ -205,9 +221,7 @@ public class Cadet {
 			}else{
 				int ind = -1;
 				for(int i = 0; i < table.length; i+=11){
-					System.out.println("fuckkkk::::::: " + table[i]);
 					if(reps > table[i]){
-						System.out.println("fPOOOOOOOOOP");
 						ind = i;
 					}
 				}
@@ -227,7 +241,7 @@ public class Cadet {
 					found = true;
 				}
 			}
-		} else { //run
+		}else { //run
 			for(int i = 0; i < table.length; i+=11){
 				if((score <= table[i + ageIndex])){
 					ret = table[i];
@@ -355,7 +369,7 @@ public class Cadet {
 		,74,100,99,97,99,100,100,100,100,100,100
 		,75,100,100,98,100,100,100,100,100,100,100
 		,76,100,100,99,100,100,100,100,100,100,100
-		,77,100,100,100,100,100,100,100,100,100,100	
+		,77,100,100,100,100,100,100,100,100,100,100
 	};
 	private static int[] situpScoresMale = {
 		0,0,0,0,0,0,0,0,0,0,0

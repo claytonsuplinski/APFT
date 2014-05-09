@@ -444,6 +444,88 @@ public class DBUtil {
 		return 0;
 	}
 	
+	public static ArrayList<Integer> cdtGetScores(String cdtId, int eventNum){
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return ret;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return ret;
+		}
+		ret.add(cdt.getInt("event" + eventNum + "PU"));
+		ret.add(cdt.getInt("event" + eventNum + "SU"));
+		ret.add(Cadet.sToA(cdt.getInt("event" + eventNum + "RU")));
+		int numLap = cdt.getInt("event"+eventNum+"LapNum");
+		for(int i= 1; i <= numLap; i++){
+			ret.add(cdt.getInt("event" + eventNum + "Lap" + i));
+		}
+		return ret;
+	}
+	
+	public static String getCdtEvent(String cdtId, int eventNum){
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return "";
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return "";
+		}
+
+		return cdt.getString("event"+eventNum);
+	}
+	
+	public static int getCdtEventNum(String cdtId){
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return -1;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("cdt is null");
+			return -1;
+		}
+
+		return cdt.getInt("eventNum");
+	}
+	
+	public static ArrayList<Integer> getCdtLaps(String cdtId, int eventNum){
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+		ParseObject cdt = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
+		try {
+			cdt = query.get(cdtId);
+		} catch (ParseException e) {
+			//Failed to get cdtId TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for cdtId?");
+			return ret;
+		}
+		if(cdt == null){//db is null. Not connected to internet?
+			System.out.println("db is null");
+			return ret;
+		}
+		for(int i = 0; i < cdt.getInt("event" + eventNum + "LapNum"); i++){
+			ret.add(cdt.getInt("event" + eventNum + "Lap" + i));
+		}
+		return ret;
+	}
+	
 	public static boolean cdtAddPU(String cdtId, int eventNum, int score, String date){
 		ParseObject cdt = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
@@ -462,8 +544,13 @@ public class DBUtil {
 		if(eventNum == 0){//this event doesnt exist, so add new one
 			int e = cdt.getInt("eventNum");
 			cdt.put("eventNum", e+1);
+			cdt.put("event"+(e+1)+"PU", 0);
+			cdt.put("event"+(e+1)+"SU", 0);
+			cdt.put("event"+(e+1)+"RU", 0);
+			cdt.put("event"+(e+1)+"LapNum", 0);
 			cdt.put("event"+(e+1)+"PU", score);
 			cdt.put("event"+(e+1), date);
+
 		}else{
 			cdt.put("event"+eventNum+"PU", score);
 		}
@@ -493,6 +580,10 @@ public class DBUtil {
 		if(eventNum == 0){//this event doesnt exist, so add new one
 			int e = cdt.getInt("eventNum");
 			cdt.put("eventNum", e+1);
+			cdt.put("event"+(e+1)+"PU", 0);
+			cdt.put("event"+(e+1)+"SU", 0);
+			cdt.put("event"+(e+1)+"RU", 0);
+			cdt.put("event"+(e+1)+"LapNum", 0);
 			cdt.put("event"+(e+1)+"SU", score);
 			cdt.put("event"+(e+1), date);
 		}else{

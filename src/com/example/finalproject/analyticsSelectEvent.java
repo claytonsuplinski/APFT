@@ -49,6 +49,7 @@ public class analyticsSelectEvent extends Activity implements View.OnClickListen
 		int selectedEvent = arg0.getId();
 		Intent i = new Intent(this, analyticsIndividualEvent.class);
 		i.putExtra("event", eventList.get(selectedEvent));
+		i.putExtra("eventNum", (selectedEvent));
 		startActivity(i);
 	}
 }

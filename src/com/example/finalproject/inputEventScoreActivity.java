@@ -166,7 +166,7 @@ public class inputEventScoreActivity extends Activity implements OnClickListener
 		tr =  new TableRow(this);
 		EditText c2 = new EditText(this);
 		c2.setId(2);
-		c2.setText("Input Score");
+		c2.setHint("Input Score");
 		c2.setTextSize(18);
 		c2.setTextColor(Color.BLACK);
 		c2.setGravity(Gravity.CENTER);

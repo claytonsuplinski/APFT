@@ -50,6 +50,7 @@ public class leaderboardSelectEvent extends Activity implements View.OnClickList
 		int selectedEvent = arg0.getId();
 		Intent i = new Intent(this, leaderboard.class);
 		i.putExtra("event", eventList.get(selectedEvent));
+		i.putExtra("eventNum", selectedEvent);
 		startActivity(i);
 	}
 

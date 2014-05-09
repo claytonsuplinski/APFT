@@ -1,5 +1,7 @@
 package com.example.finalproject;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,10 +13,22 @@ import android.widget.TextView;
 
 public class analyticsIndividualCadetEvent extends Activity implements View.OnClickListener{
 	
+	String cdtId = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_analytics_individual_cadet_event);
+		varApplication va = (varApplication)getApplicationContext();
+		String dbId = va.getId();
+		Bundle extras = getIntent().getExtras();
+		cdtId = extras.getString("cdtId");//eventNum
+		int eventNum = extras.getInt("eventNum");
+		eventNum++;
+		
+		ArrayList<String> info = DBUtil.getCdtInfo(cdtId);
+		ArrayList<Integer> scores = DBUtil.cdtGetScores(cdtId, eventNum);
+		int age = Cadet.dobToAge(info.get(1));
+		Cadet cdt = new Cadet("", age, info.get(2), scores.get(0), scores.get(1), scores.get(2));
 		
 		int i=0;
 
@@ -27,7 +41,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Cadet Name");
+		c1.setText(info.get(0));
 		c1.setTextSize(26);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -49,7 +63,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Raw Score");
+		c1.setText("Raw Scores");
 		c1.setTextSize(24);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -71,7 +85,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Pushups: 36");
+		c1.setText("Pushups: " + scores.get(0));
 		c1.setTextSize(18);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -85,7 +99,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Situps: 75");
+		c1.setText("Situps: " + scores.get(1));
 		c1.setTextSize(18);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -99,7 +113,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Run: 13:10");
+		c1.setText("Run: " + scores.get(2));
 		c1.setTextSize(18);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -143,7 +157,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Pushup Score: 87");
+		c1.setText("Pushup Score: " + cdt.getPushUps());
 		c1.setTextSize(18);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -157,7 +171,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Situp Score: 65");
+		c1.setText("Situp Score: " + cdt.getSitUps());
 		c1.setTextSize(18);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -171,7 +185,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Run Score: 88");
+		c1.setText("Run Score: " + cdt.getRunScore());
 		c1.setTextSize(18);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -185,7 +199,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		c1.setId(i);
 		i++;
 		c1.setOnClickListener(this);
-		c1.setText("Overall Score: 230");
+		c1.setText("Overall Score: " + cdt.getScore());
 		c1.setTextSize(20);
 		c1.setTextColor(Color.WHITE);
 		c1.setGravity(Gravity.CENTER);
@@ -225,14 +239,16 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		tr.addView(c1);
 		events.addView(tr);
 		
-		int numLaps = 14;
+		ArrayList<Integer> laps = DBUtil.getCdtLaps(cdtId, eventNum);
+		
+		int numLaps = laps.size();
 
 		for(int j = 0; j < numLaps; j++){
 			tr =  new TableRow(this);
 			c1 = new TextView(this);
 			c1.setId(i+j);
 			c1.setOnClickListener(this);
-			c1.setText("Lap " + (j+1) + ": 0:57");
+			c1.setText("Lap " + (j+1) + ": " + laps.get(j));
 			c1.setTextSize(18);
 			c1.setTextColor(Color.WHITE);
 			c1.setGravity(Gravity.CENTER);
