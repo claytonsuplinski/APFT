@@ -223,7 +223,7 @@ public class lapCounter extends Activity implements View.OnClickListener {
 						for(int j = 0; j < numLaps; j++){
 							sum += cadetLapTimes.get(i).get(j);
 						}
-						DBUtil.cdtAddRU(cdtList.get(i).get(1), eventNum, sum, cadetLapTimes.get(i));
+						DBUtil.cdtAddRU(cdtList.get(i).get(1), eventNum, sum, cadetLapTimes.get(i), event);
 					}
 				}
 

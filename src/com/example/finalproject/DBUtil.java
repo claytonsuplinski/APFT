@@ -597,7 +597,7 @@ public class DBUtil {
 		}
 		return true;
 	}
-	public static boolean cdtAddRU(String cdtId, int eventNum, int time, ArrayList<Integer> laps){
+	public static boolean cdtAddRU(String cdtId, int eventNum, int time, ArrayList<Integer> laps, String date){
 		ParseObject cdt = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
 		try {
@@ -612,12 +612,26 @@ public class DBUtil {
 			return false;
 		}
 		//have cdt now edit
-		int lapNum = laps.size();
-		cdt.put("event"+eventNum+"LapNum", lapNum);
-		for(int i = 0; i < lapNum; i++){
-			cdt.put("event"+eventNum+"Lap"+i, laps.get(i).intValue());
+		if(eventNum == 0){//event doesnt exist
+			int e = cdt.getInt("eventNum");
+			cdt.put("eventNum", e+1);
+			cdt.put("event"+(e+1)+"PU", 0);
+			cdt.put("event"+(e+1)+"SU", 0);
+			cdt.put("event"+(e+1)+"RU", 0);
+			cdt.put("event"+(e+1)+"LapNum", laps.size());
+			cdt.put("event"+(e+1)+"RU", time);
+			for(int i = 0; i < laps.size(); i++){
+				cdt.put("event"+(e+1)+"Lap"+i, laps.get(i).intValue());
+			}
+			cdt.put("event"+(e+1), date);
+		}else{
+			int lapNum = laps.size();
+			cdt.put("event"+eventNum+"LapNum", lapNum);
+			for(int i = 0; i < lapNum; i++){
+				cdt.put("event"+eventNum+"Lap"+i, laps.get(i).intValue());
+			}
+			cdt.add("event"+eventNum+"RU", time);
 		}
-		cdt.add("event"+eventNum+"RU", time);
 		try {
 			cdt.save();
 		} catch (ParseException e) {
