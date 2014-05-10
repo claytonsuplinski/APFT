@@ -72,7 +72,7 @@ public class lapCounter extends Activity implements View.OnClickListener {
 			c1.setId(i);
 			c1.setOnClickListener(this);
 
-			c1.setText("Suplinski, Clayton" + "\n" + cadetLapCounters[i]);
+			c1.setText(cdtList.get(i).get(0) + "\n" + cadetLapCounters[i]);
 			c1.setTextSize(16);
 			c1.setTextColor(Color.WHITE);
 			c1.setGravity(Gravity.CENTER);
@@ -164,7 +164,7 @@ public class lapCounter extends Activity implements View.OnClickListener {
 				previousLapSums.set(i, (60*minutes)+seconds);
 			}
 			TextView time = (TextView)findViewById(i);
-			time.setText("Suplinski, Clayton" + "\n" + cadetLapCounters[i]);
+			time.setText(cdtList.get(i).get(0) + "\n" + cadetLapCounters[i]);
 			
 			
 		}
