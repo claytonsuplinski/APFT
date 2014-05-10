@@ -12,6 +12,8 @@
         android:layout_marginRight="@dimen/btn_margin_horizontal"
         android:layout_marginTop="@dimen/btn_margin_vertical"
         android:layout_marginBottom="@dimen/btn_margin_vertical"
+        android:paddingTop="@dimen/activity_padding_vertical"
+        android:paddingBottom="@dimen/activity_padding_vertical"
         android:background="@drawable/gradient"
         android:text="Link to Database"
         android:textColor="#FFFFFFFF" />
@@ -46,6 +48,8 @@
         android:layout_marginLeft="@dimen/btn_margin_horizontal"
         android:layout_marginRight="@dimen/btn_margin_horizontal"
         android:layout_marginTop="@dimen/btn_margin_vertical"
+        android:paddingTop="@dimen/activity_padding_vertical"
+        android:paddingBottom="@dimen/activity_padding_vertical"
         android:background="@drawable/gradient"
         android:onClick="onButtonClick"
         android:textSize="14dp"
