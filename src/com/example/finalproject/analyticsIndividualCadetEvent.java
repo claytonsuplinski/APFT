@@ -23,7 +23,7 @@ public class analyticsIndividualCadetEvent extends Activity implements View.OnCl
 		Bundle extras = getIntent().getExtras();
 		cdtId = extras.getString("cdtId");//eventNum
 		int eventNum = extras.getInt("eventNum");
-		eventNum++;
+		//eventNum++;
 		
 		ArrayList<String> info = DBUtil.getCdtInfo(cdtId);
 		ArrayList<Integer> scores = DBUtil.cdtGetScores(cdtId, eventNum);

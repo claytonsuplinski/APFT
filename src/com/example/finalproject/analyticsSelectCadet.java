@@ -32,7 +32,11 @@ public class analyticsSelectCadet extends Activity implements View.OnClickListen
 			TextView c1 = new TextView(this);
 			c1.setId(i);
 			c1.setOnClickListener(this);
+<<<<<<< HEAD
 			c1.setText("" + cdtList.get(i).get(0));
+=======
+			c1.setText("Cadet: " + cdtList.get(i).get(0));
+>>>>>>> 3b9d2f106a6b8c4514736d67df3fb1a6fc90299b
 			c1.setPadding(0, 10, 0, 10);
 			c1.setTextSize(24);
 			c1.setTextColor(Color.WHITE);

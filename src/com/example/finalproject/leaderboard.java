@@ -54,14 +54,15 @@ public class leaderboard extends Activity{
 				String dob2 = cdtInfo2.get(1); //dob
 				String gender2 = cdtInfo2.get(2);
 				ArrayList<Integer> cdtScores2 = DBUtil.cdtGetScores(cdtId2, Integer.parseInt(b.get(1)));
-				int pu2 = cdtScores.get(0);
-				int su2 = cdtScores.get(1);
-				int ru2 = cdtScores.get(2);
+				int pu2 = cdtScores2.get(0);
+				int su2 = cdtScores2.get(1);
+				int ru2 = cdtScores2.get(2);
 				Cadet tmpCdt2 = new Cadet("", Cadet.dobToAge(dob2), gender2, pu2, su2, ru2);
 				
 				return tmpCdt2.getScore() - tmpCdt1.getScore();
 		    }
 		});
+		System.out.println("cdtId sorteD: " + cdtIds);
 		System.out.println("cdtId size after sort=" + cdtIds.size());
 		//now cdtIds is sorted so we build our thing accordingly
 		int sumP = 0;
