@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class inputEventScoreActivity extends Activity implements OnClickListener {
 
@@ -206,10 +207,18 @@ public class inputEventScoreActivity extends Activity implements OnClickListener
 		// TODO Auto-generated method stub
 		if(arg0.getId() == 3){
 			int eventNum = DBUtil.cdtGetEventNum(cdtId, event);
+			boolean success = false;
 			if(isPU == 1){
-				DBUtil.cdtAddPU(cdtId, eventNum, Integer.parseInt(et.getText().toString()), event);
+				success = DBUtil.cdtAddPU(cdtId, eventNum, Integer.parseInt(et.getText().toString()), event);
 			}else if(isPU == 0){
-				DBUtil.cdtAddSU(cdtId, eventNum, Integer.parseInt(et.getText().toString()), event);
+				success = DBUtil.cdtAddSU(cdtId, eventNum, Integer.parseInt(et.getText().toString()), event);
+			}
+			
+			if(success){
+				Toast.makeText(this, "Successfully saved.", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

@@ -32,7 +32,7 @@ public class analyticsSelectEvent extends Activity implements View.OnClickListen
 			TextView c1 = new TextView(this);
 			c1.setId(i);
 			c1.setOnClickListener(this);
-			c1.setText("Event: " + eventList.get(i));
+			c1.setText("" + eventList.get(i));
 			c1.setPadding(0, 10, 0, 10);
 			c1.setTextSize(24);
 			c1.setTextColor(Color.WHITE);

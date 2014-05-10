@@ -34,7 +34,7 @@ public class gradeApftActivity extends Activity implements View.OnClickListener 
 			TextView c1 = new TextView(this);
 			c1.setId(i);
 			c1.setOnClickListener(this);
-			c1.setText("Event" + eventList.get(i));
+			c1.setText("" + eventList.get(i));
 			c1.setTextSize(24);
 			c1.setTextColor(Color.WHITE);
 			c1.setGravity(Gravity.CENTER);
