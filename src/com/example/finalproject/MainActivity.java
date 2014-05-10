@@ -24,16 +24,28 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	public void onButtonClick(View v)
 	{
 
 		Intent i;
+		varApplication va = (varApplication)getApplicationContext();
+		String dbId = va.getAuth();
 		switch(v.getId())
 		{
 		case R.id.button_gradeAPFT:
-			i = new Intent(this, gradeApftActivity.class);
-			startActivity(i);
+
+
+			if(dbId == "admin" || dbId == "grader"){
+				i = new Intent(this, gradeApftActivity.class);
+				startActivity(i);
+			}
+			else if(dbId == "user"){
+				Toast.makeText(this, "Grading permissions denied.", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Toast.makeText(this, "Not connected to database.", Toast.LENGTH_SHORT).show();
+			}
 			break;
 		case R.id.button_quickCalc:
 			i = new Intent(this, apftCalculator.class);
@@ -44,12 +56,22 @@ public class MainActivity extends Activity {
 			startActivity(i);
 			break;
 		case R.id.button_leaderboard:
-			i = new Intent(this, leaderboardSelectEvent.class);
-			startActivity(i);
+			if(dbId == "admin" || dbId == "grader" || dbId == "user"){
+				i = new Intent(this, leaderboardSelectEvent.class);
+				startActivity(i);
+			}
+			else{
+				Toast.makeText(this, "Not connected to database.", Toast.LENGTH_SHORT).show();
+			}
 			break;
 		case R.id.button_analytics:
-			i = new Intent(this, analyticsMain.class);
-			startActivity(i);
+			if(dbId == "admin" || dbId == "grader" || dbId == "user"){
+				i = new Intent(this, analyticsMain.class);
+				startActivity(i);
+			}
+			else{
+				Toast.makeText(this, "Not connected to database.", Toast.LENGTH_SHORT).show();
+			}
 			break;
 
 		default:
