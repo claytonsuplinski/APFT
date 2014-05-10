@@ -112,7 +112,7 @@
         android:padding="5dip" >
         <TextView
             android:gravity="center"
-            android:text="Run time (seconds): "
+            android:text="Run time (mmss): "
             android:textColor="#FFFFFFFF" />
         <EditText
             android:id="@+id/calc_runtime"
