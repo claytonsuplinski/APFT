@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class lapCounter extends Activity implements View.OnClickListener {
 
@@ -216,6 +217,8 @@ public class lapCounter extends Activity implements View.OnClickListener {
 					timer = new Timer();
 					clockRunning = false;
 					
+					boolean success = true;
+					
 					//Save to database here
 					for(int i = 0; i < numCadets; i++){
 						eventNum = DBUtil.cdtGetEventNum(cdtList.get(i).get(1), event);
@@ -223,7 +226,17 @@ public class lapCounter extends Activity implements View.OnClickListener {
 						for(int j = 0; j < numLaps; j++){
 							sum += cadetLapTimes.get(i).get(j);
 						}
-						DBUtil.cdtAddRU(cdtList.get(i).get(1), eventNum, sum, cadetLapTimes.get(i), event);
+						boolean tmpSuccess = DBUtil.cdtAddRU(cdtList.get(i).get(1), eventNum, sum, cadetLapTimes.get(i), event);
+						if(!tmpSuccess){
+							success = false;
+						}
+					}
+					
+					if(success){
+						Toast.makeText(this, "Saved to database.", Toast.LENGTH_SHORT).show();
+					}
+					else{
+						Toast.makeText(this, "Failed to save to database.", Toast.LENGTH_SHORT).show();
 					}
 				}
 
