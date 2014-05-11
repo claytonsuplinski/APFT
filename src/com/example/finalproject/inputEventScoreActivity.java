@@ -31,14 +31,11 @@ public class inputEventScoreActivity extends Activity implements OnClickListener
 		Intent intent = getIntent();
 		Bundle extras = intent.getExtras(); 
 		int pushups = extras.getInt("pushupsEqualsOne");
-		System.out.println("iPU=" + pushups);
 		isPU = pushups;
 		cdtId = extras.getString("cdtId");
-		System.out.println("cdtId: " +cdtId);
 		event = extras.getString("event");
 		
 		ArrayList<String> info = DBUtil.getCdtInfo(cdtId);
-		System.out.println(info);
 		
 		
 		TableLayout cadets = (TableLayout)findViewById(R.id.tableLayout1);
@@ -115,13 +112,6 @@ public class inputEventScoreActivity extends Activity implements OnClickListener
 			g = Cadet.Gender.female;
 		}
 		ArrayList<int[]> scores = Cadet.minMaxScores(Cadet.dobToAge(info.get(1)), g);
-		System.out.println("scores:::: " + scores);
-		System.out.println(scores.get(0)[0]);
-		System.out.println(scores.get(0)[1]);
-		System.out.println(scores.get(1)[0]);
-		System.out.println(scores.get(1)[1]);
-		System.out.println(scores.get(2)[0]);
-		System.out.println(scores.get(2)[1]);
 		
 		tr =  new TableRow(this);
 		c1 = new TextView(this);

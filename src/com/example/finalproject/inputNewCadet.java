@@ -22,7 +22,6 @@ public class inputNewCadet extends Activity {
 		switch(v.getId())
 		{
 			case R.id.button_saveCadet:
-			System.out.println("AM I EVEN CALLED?");
 			EditText editF = (EditText)findViewById(R.id.inputFirstName);
 			EditText editL = (EditText)findViewById(R.id.inputLastName);
 			EditText editG = (EditText)findViewById(R.id.inputGender);

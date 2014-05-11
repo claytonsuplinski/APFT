@@ -34,7 +34,6 @@ public class leaderboard extends Activity{
 			ar.add(en);
 			cdtIds.add(ar);
 		}
-		System.out.println("cdtId size=" + cdtIds.size());
 		Collections.sort(cdtIds, new Comparator<ArrayList<String>>() {
 		    public int compare(ArrayList<String> a, ArrayList<String> b) {
 				String cdtId1 = a.get(0);
@@ -62,8 +61,7 @@ public class leaderboard extends Activity{
 				return tmpCdt2.getScore() - tmpCdt1.getScore();
 		    }
 		});
-		System.out.println("cdtId sorteD: " + cdtIds);
-		System.out.println("cdtId size after sort=" + cdtIds.size());
+	
 		//now cdtIds is sorted so we build our thing accordingly
 		int sumP = 0;
 		int sumS = 0;
@@ -101,7 +99,6 @@ public class leaderboard extends Activity{
 			toAdd.add(name1);
 			toAdd.add(Integer.toString(comp));
 			toAdd.add(Integer.toString(tmpCdt1.getScore()));
-			System.out.println("toAdd added=" + toAdd);
 			toShow.add(toAdd);
 		}
 		

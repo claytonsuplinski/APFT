@@ -54,7 +54,6 @@ public class cadetSelectActivity extends Activity implements View.OnClickListene
 		int selectedEvent = arg0.getId();
 		int tmp = extras.getInt("pushupsEqualsOne");
 		Intent i = new Intent(this, inputEventScoreActivity.class);
-		System.out.println("YOOOOOOOOOOOO: " +tmp + " : " + cdts.get(selectedEvent) + " : " +  extras.getString("event"));
 		i.putExtra("pushupsEqualsOne",tmp);
 		i.putExtra("cdtId", cdts.get(selectedEvent).get(1));
 		i.putExtra("event", extras.getString("event"));
