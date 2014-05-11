@@ -18,6 +18,8 @@ public class databaseOps extends Activity {
 	{
 
 		Intent i;
+		varApplication va = (varApplication)getApplicationContext();
+		String dbId = va.getAuth();
 		switch(v.getId())
 		{
 		case R.id.button_linkDB:
@@ -25,12 +27,28 @@ public class databaseOps extends Activity {
 			startActivity(i);
 			break;
 		case R.id.button_inputCadets:
-			i = new Intent(this, inputEditCadet.class);
-			startActivity(i);
+			if(dbId == "admin"){
+				i = new Intent(this, inputEditCadet.class);
+				startActivity(i);
+			}
+			else if(dbId == "grader" || dbId == "user"){
+				Toast.makeText(this, "Access denied.", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Toast.makeText(this, "Not connected to database.", Toast.LENGTH_SHORT).show();
+			}
 			break;
 		case R.id.button_createNewEvent:
-			i = new Intent(this, createNewEvent.class);
-			startActivity(i);
+			if(dbId == "admin"){
+				i = new Intent(this, createNewEvent.class);
+				startActivity(i);
+			}
+			else if(dbId == "grader" || dbId == "user"){
+				Toast.makeText(this, "Access denied.", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Toast.makeText(this, "Not connected to database.", Toast.LENGTH_SHORT).show();
+			}
 			break;
 		default:
 		}
