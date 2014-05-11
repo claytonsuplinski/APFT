@@ -21,11 +21,9 @@ public class DBUtil {
 			dbList = query.get(dbListID);
 		} catch (ParseException e) {
 			//Failed to get DBList TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbList");
 			return ret;
 		}
 		if(dbList == null){//DBList is null. Not connected to internet?
-			System.out.println("DBList is null");
 			return ret;//TODO: sactuall handle this
 		}
 		int dbNum = dbList.getInt("dbNum");
@@ -34,7 +32,9 @@ public class DBUtil {
 				String nameDb = dbList.getString("db" + Integer.toString(i) + "Name");
 				if(nameDb != null){
 					if(nameDb.length() > 0 && !(nameDb.equalsIgnoreCase("null"))){
-						ret = nameDb;
+						if(nameDb.equals(name)){
+							ret = dbList.getString("db" + Integer.toString(i) + "Id");
+						}
 					}
 				}
 			}
@@ -48,14 +48,11 @@ public class DBUtil {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 55656");
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId fffffffff?");
 			return false;
 		}
 		if(db == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return false;
 		}
 		//got db, now kill every cadet in it
@@ -69,11 +66,9 @@ public class DBUtil {
 			dbList = query2.get(dbListID);
 		} catch (ParseException e) {
 			//Failed to get DBList TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbList");
 			return false;
 		}
 		if(dbList == null){//DBList is null. Not connected to internet?
-			System.out.println("DBList is null");
 			return false;//TODO: sactuall handle this
 		}
 		int dbNum = dbList.getInt("dbNum");
@@ -91,13 +86,11 @@ public class DBUtil {
 		try {
 			dbList.save();
 		} catch (ParseException e1) {
-			System.out.println("Failed to write dbList");
 		}
 		//then finally kill db
 		try {
 			db.delete();
 		} catch (ParseException e) {
-			System.out.println("Failed to kill db");
 			return false;
 		}
 		return true;
@@ -110,14 +103,11 @@ public class DBUtil {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 55656");
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId fffffffff?");
 			return ret;
 		}
 		if(db == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return ret;
 		}
 		int eNum = db.getInt("eventNum");
@@ -128,21 +118,17 @@ public class DBUtil {
 	}
 	
 	public static boolean addEvent(String dbId, String date){
-		System.out.println("adding new event: " + date);
 		ArrayList<String> ret = new ArrayList<String>();
 		//first load db
 		ParseObject db = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 55656");
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId fffffffff?");
 			return false;
 		}
 		if(db == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return false;
 		}
 		int eNum = db.getInt("eventNum");
@@ -151,10 +137,8 @@ public class DBUtil {
 		try {
 			db.save();
 		} catch (ParseException e) {
-			System.out.println("failed to write new event to database");
 			return false;
 		}
-		System.out.println("Success writing event: " + date);
 		return true;
 	}
 	
@@ -165,20 +149,16 @@ public class DBUtil {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 55656");
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId fffffffff?");
 			return ret;
 		}
 		if(db == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return ret;
 		}
 		//db loaded
 		ret.add(db.getString("name"));
 		ret.add(dbId);
-		System.out.println("KERPOWWW: " + db.getString("objectId"));
 		ret.add(db.getString("adminCode"));
 		ret.add(db.getString("userCode"));
 		ret.add(db.getString("graderCode"));
@@ -195,17 +175,13 @@ public class DBUtil {
 			dbList = query.get(dbListID);
 		} catch (ParseException e) {
 			//Failed to get DBList TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbList");
 			return ret;
 		}
 		if(dbList == null){//DBList is null. Not connected to internet?
-			System.out.println("DBList is null");
 			return ret;//TODO: sactuall handle this
 		}	
-		System.out.println("now searching through the names in DBList");
 		//We have a nonnull DBList so search it for a db with the existing name
 		int dbNum = dbList.getInt("dbNum");
-		System.out.println("getting dbnum");
 		if(dbNum != 0){
 			for(int i = 1; i <= dbNum; i++){//stored as name then id
 				String name = dbList.getString("db" + Integer.toString(i) + "Name");
@@ -227,14 +203,11 @@ public class DBUtil {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 1");
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId fffffffff?");
 			return null;
 		}
 		if(db == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return null;
 		}
 		//got db, now get list of cdt
@@ -251,7 +224,7 @@ public class DBUtil {
 					ret1.add(db.getString("cdt" + Integer.toString(i) + "Id"));
 					ret.add(ret1);
 				} catch (ParseException e) {
-					System.out.println("Failed to query the cdt with that id");
+					//nothing to do
 				}
 
 			}
@@ -266,11 +239,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return false;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return false;
 		}
 		//have cdt now edit
@@ -280,7 +251,6 @@ public class DBUtil {
 		try {
 			cdt.save();
 		} catch (ParseException e) {
-			System.out.println("Failed to write cdt edits");
 			return false;
 		}
 		return true;
@@ -289,17 +259,13 @@ public class DBUtil {
 	public static String getDbName(String dbId){
 		ParseObject db = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
-		System.out.println("got here 2-1");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 2-2");
 		} catch (ParseException e) {
 			//Failed to get dbId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId");
 			return "null";
 		}
 		if(db == null){//DBList is null. Not connected to internet?
-			System.out.println("DBList is null");
 			return "null";
 		}
 		return db.getString("name");
@@ -310,20 +276,15 @@ public class DBUtil {
 	public static String linkDb(String dbId, String code){
 		ParseObject db = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
-		System.out.println("got here 2-1");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 2-2");
 		} catch (ParseException e) {
 			//Failed to get dbId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId");
 			return "null";
 		}
 		if(db == null){//DBList is null. Not connected to internet?
-			System.out.println("DBList is null");
 			return "null";
 		}
-		System.out.println("got here 2-3");
 		String admin = db.getString("adminCode");
 		String grader = db.getString("graderCode");
 		String user = db.getString("userCode");
@@ -334,7 +295,6 @@ public class DBUtil {
 		}else if(user.equals(code)){
 			return "user";
 		}
-		System.out.println("got here 2-4");
 		//else matches non of the codes
 		return "null";
 	}
@@ -346,14 +306,11 @@ public class DBUtil {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 1");
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId fffffffff?");
 			return false;
 		}
 		if(db == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return false;
 		}
 		//got db, now rewrite the cdt name and id
@@ -373,20 +330,15 @@ public class DBUtil {
 		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Cadet");
 		try {
 			cdt = query2.get(cdtId);
-			System.out.println("got here 2323232323");
 		} catch (ParseException e) {
-			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId");
 			return false;
 		}
 		if(cdt == null){//DBList is null. Not connected to internet?
-			System.out.println("cdt is null");
 			return false;
 		}
 		try {
 			cdt.delete();
 		} catch (ParseException e) {
-			System.out.println("failed to delete cdt");
 			return false;
 		}
 		
@@ -399,14 +351,11 @@ public class DBUtil {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Cadet");
 		try {
 			cdt = query.get(cdtId);
-			System.out.println("got here 1");
 		} catch (ParseException e) {
 			//Failed to get dbId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId");
 			return ret;
 		}
 		if(cdt == null){//DBList is null. Not connected to internet?
-			System.out.println("DBList is null");
 			return ret;//TODO: sactuall handle this
 		}
 		ret.add(cdt.getString("name"));
@@ -423,11 +372,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return false;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return false;
 		}
 		//have cdt now edit
@@ -441,7 +388,6 @@ public class DBUtil {
 		try {
 			cdt.save();
 		} catch (ParseException e) {
-			System.out.println("Failed to write cdt edits");
 			return false;
 		}
 		return true;
@@ -455,11 +401,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return -1;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return -1;
 		}
 		if(cdt.getInt("eventNum") == 0){
@@ -482,11 +426,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return ret;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return ret;
 		}
 		ret.add(cdt.getInt("event" + eventNum + "PU"));
@@ -506,11 +448,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return "";
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return "";
 		}
 
@@ -524,11 +464,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return -1;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("cdt is null");
 			return -1;
 		}
 
@@ -543,11 +481,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return ret;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return ret;
 		}
 		for(int i = 0; i < cdt.getInt("event" + eventNum + "LapNum"); i++){
@@ -563,11 +499,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return false;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return false;
 		}
 		//have cdt now edit
@@ -587,7 +521,6 @@ public class DBUtil {
 		try {
 			cdt.save();
 		} catch (ParseException e) {
-			System.out.println("Failed to write cdt edits");
 			return false;
 		}
 		return true;
@@ -599,11 +532,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return false;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return false;
 		}
 		//have cdt now edit
@@ -622,7 +553,6 @@ public class DBUtil {
 		try {
 			cdt.save();
 		} catch (ParseException e) {
-			System.out.println("Failed to write cdt edits");
 			return false;
 		}
 		return true;
@@ -634,11 +564,9 @@ public class DBUtil {
 			cdt = query.get(cdtId);
 		} catch (ParseException e) {
 			//Failed to get cdtId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for cdtId?");
 			return false;
 		}
 		if(cdt == null){//db is null. Not connected to internet?
-			System.out.println("db is null");
 			return false;
 		}
 		//have cdt now edit
@@ -665,7 +593,6 @@ public class DBUtil {
 		try {
 			cdt.save();
 		} catch (ParseException e) {
-			System.out.println("Failed to write cdt edits");
 			return false;
 		}
 		return true;
@@ -676,14 +603,11 @@ public class DBUtil {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Database");
 		try {
 			db = query.get(dbId);
-			System.out.println("got here 1");
 		} catch (ParseException e) {
 			//Failed to get dbId TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbId");
 			return false;
 		}
 		if(db == null){//DBList is null. Not connected to internet?
-			System.out.println("DBList is null");
 			return false;//TODO: sactuall handle this
 		}
 		
@@ -696,7 +620,6 @@ public class DBUtil {
 		try {
 			cdt.save();
 		} catch (ParseException e) {
-			System.out.println("Failed to write cdt");
 			return false;
 		}
 		//now link to the db
@@ -706,7 +629,6 @@ public class DBUtil {
 		try {
 			db.save();
 		} catch (ParseException e) {
-			System.out.println("failed to write to db");
 			return false;
 		}
 		
@@ -720,21 +642,16 @@ public class DBUtil {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("DBList");
 		try {
 			dbList = query.get(dbListID);
-			System.out.println("got here 1");
 		} catch (ParseException e) {
 			//Failed to get DBList TODO:what does this even mean, no connectivity?
-			System.out.println("ParseException querying for dbList");
 			return false;
 		}
 		if(dbList == null){//DBList is null. Not connected to internet?
-			System.out.println("DBList is null");
 			return false;//TODO: sactuall handle this
 		}
 		
-		System.out.println("now searching through the names in DBList");
 		//We have a nonnull DBList so search it for a db with the existing name
 		int dbNum = dbList.getInt("dbNum");
-		System.out.println("getting dbnum");
 		if(dbNum != 0){
 			for(int i = 1; i <= dbNum; i++){
 				if(dbList.getString("db" + Integer.toString(i) + "Name").equalsIgnoreCase(dbName)){
@@ -742,7 +659,6 @@ public class DBUtil {
 				}
 			}
 		}
-		System.out.println("making new db");
 		//if we get there then the name is available so we go ahead and make it
 		ParseObject db = new ParseObject("Database");
 		db.put("name", dbName);
@@ -751,29 +667,21 @@ public class DBUtil {
 		db.put("userCode", userCode);
 		db.put("cdtNum", 0);
 		db.put("eventNum", 0);
-		System.out.println("writing new db");
 		try {
 			db.save();
 		} catch (ParseException e) {
 			//Failed to save
-			System.out.println("Failed to save");
 			return false;
 		}
-		System.out.println("success");
 		//Now update the dblist
-		System.out.println("yoyoyoy " + db.getObjectId());
 		dbList.put("dbNum", dbNum+1);
 		dbList.put("db" + (dbNum+1) + "Name", dbName);
 		dbList.put("db" + (dbNum+1) + "Id", db.getObjectId());
-		System.out.println("yo2");
 		try {
 			dbList.save();
-			System.out.println("yo3");
 		} catch (ParseException e) {
-			System.out.println("Failed to update db");
 			return false;
 		}
-		System.out.println("yo4");
 		return true;
 	}
 	

@@ -46,7 +46,6 @@ public class myDatabases extends Activity implements View.OnClickListener {
 		int selectedEvent = arg0.getId();
 		Intent i = new Intent(this, individualDatabaseInfo.class);
 		ArrayList<ArrayList<String>> dbList = DBUtil.getListDb();
-		System.out.println("added db with id: " + dbList.get(selectedEvent).get(1));
 		i.putExtra("id", dbList.get(selectedEvent).get(1));
 		startActivity(i);
 	}

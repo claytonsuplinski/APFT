@@ -20,10 +20,8 @@ public class inputDatabaseCode extends Activity {
 		setContentView(R.layout.activity_input_database_code);
 		
 		//Retrieve current db name
-		System.out.println("get here 1");
 		varApplication va = (varApplication)getApplicationContext();
 	    String dbName = va.getName();
-		System.out.println("get here 2: " + dbName);
 		TableLayout events = (TableLayout)findViewById(R.id.tableLayout1);
 		events.setStretchAllColumns(true);
 		events.bringToFront();
@@ -51,10 +49,8 @@ public class inputDatabaseCode extends Activity {
 				EditText editCode = (EditText)findViewById(R.id.databaseCode);
 				String id = DBUtil.getDBIdFromName(editId.getText().toString());
 				String code = editCode.getText().toString();
-				System.out.println("get here 3");
 				String auth = DBUtil.linkDb(id, code);
 				String name = DBUtil.getDbName(id);
-				System.out.println("get here 4:" + auth + " : " + id + " : " + code);
 				if(auth.equalsIgnoreCase("admin")){
 					 varApplication va = (varApplication)getApplicationContext();
 				     va.setAuth("admin");
@@ -80,7 +76,6 @@ public class inputDatabaseCode extends Activity {
 				     va.setName("null");
 				     Toast.makeText(this, "Failed to connect.", Toast.LENGTH_SHORT).show();
 				}
-				System.out.println("get here 5");
 			break;
 
 		default:
