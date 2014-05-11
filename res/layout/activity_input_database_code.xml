@@ -25,7 +25,7 @@
         android:layout_marginBottom="@dimen/btn_margin_vertical"
         android:background="#FFFFFFFF"
         android:layout_below="@id/inputNewCadetTitle"
-        android:hint="Database ID"
+        android:hint="Database Name"
         android:inputType="text"
         android:textColor="#000000" />
 	
