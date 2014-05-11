@@ -49,7 +49,7 @@ public class inputDatabaseCode extends Activity {
 			case R.id.button_link:
 				EditText editId = (EditText)findViewById(R.id.databaseID);
 				EditText editCode = (EditText)findViewById(R.id.databaseCode);
-				String id = editId.getText().toString();
+				String id = DBUtil.getDBIdFromName(editId.getText().toString());
 				String code = editCode.getText().toString();
 				System.out.println("get here 3");
 				String auth = DBUtil.linkDb(id, code);

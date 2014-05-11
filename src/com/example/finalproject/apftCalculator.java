@@ -23,7 +23,6 @@ public class apftCalculator extends Activity {
 		switch(v.getId())
 		{
 		case R.id.calc_calculate:
-			System.out.println("I GET CALLED MAYBEEEE?");
 			EditText editAge = (EditText)findViewById(R.id.calc_age);
 			EditText editGen = (EditText)findViewById(R.id.calc_gender);
 			EditText editPU = (EditText)findViewById(R.id.calc_pushups);
@@ -36,7 +35,6 @@ public class apftCalculator extends Activity {
 					Integer.parseInt(editRU.getText().toString()));
 
 			TextView cal = (TextView)findViewById(R.id.calc_score);
-			System.out.println("score: " + cdt.getScore());
 			cal.setText("" + cdt.getScore());
 
 		default:

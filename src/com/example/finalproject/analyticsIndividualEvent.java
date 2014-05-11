@@ -28,7 +28,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		Bundle extras = getIntent().getExtras();
 		int eventNum = extras.getInt("eventNum");//eventNum
 		eventNum++;
-		System.out.println("eventnum is " + eventNum);
 		
 		ArrayList<ArrayList<String>> cdtIds = new ArrayList<ArrayList<String>>();
 		for(int i = 0; i < cdtList.size(); i++){
@@ -38,7 +37,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 			ar.add(en);
 			cdtIds.add(ar);
 		}
-		System.out.println("cdtId size=" + cdtIds.size());
 		Collections.sort(cdtIds, new Comparator<ArrayList<String>>() {
 		    public int compare(ArrayList<String> a, ArrayList<String> b) {
 				String cdtId1 = a.get(0);
@@ -66,7 +64,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 				return tmpCdt2.getScore() - tmpCdt1.getScore();
 		    }
 		});
-		System.out.println("cdtId size after sort=" + cdtIds.size());
 		//now cdtIds is sorted so we build our thing accordingly
 		int sumP = 0;
 		int sumS = 0;
@@ -104,16 +101,12 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 			toAdd.add(name1);
 			toAdd.add(Integer.toString(comp));
 			toAdd.add(Integer.toString(tmpCdt1.getScore()));
-			System.out.println("toAdd added=" + toAdd);
 			toShow.add(toAdd);
 		}
-		System.out.println("toShow size=" + toShow.size());
 		int numCadets = toShow.size();
-		System.out.println("list size: " + numCadets);
 		TableLayout cadets = (TableLayout)findViewById(R.id.tableLayout1);
 		cadets.setStretchAllColumns(true);
 		cadets.bringToFront();
-		System.out.println("got here w1");
 		TableRow tr =  new TableRow(this);
 		TextView c1 = new TextView(this);
 		c1.setText("Name");
@@ -122,7 +115,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		c1.setGravity(Gravity.CENTER);
 		c1.setBackgroundResource(R.drawable.gradient);
 		tr.addView(c1);
-		System.out.println("got here w2");
 		c1 = new TextView(this);
 		c1.setText("Completed");
 		c1.setTextSize(20);
@@ -130,7 +122,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		c1.setGravity(Gravity.CENTER);
 		c1.setBackgroundResource(R.drawable.gradient);
 		tr.addView(c1);
-		System.out.println("got here w3");
 		c1 = new TextView(this);
 		c1.setText("Score");
 		c1.setTextSize(20);
@@ -140,7 +131,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		tr.addView(c1);
 		tr.setGravity(Gravity.CENTER);
 		cadets.addView(tr);
-		System.out.println("got here w4");
 		for(int i = 0; i < numCadets; i++){
 			tr =  new TableRow(this);
 			c1 = new TextView(this);
@@ -171,8 +161,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 			tr.setGravity(Gravity.CENTER);
 			cadets.addView(tr);
 		}
-		System.out.println("got here w5");
-		//now calculate averages
 		
 		
 		tr =  new TableRow(this);
@@ -182,7 +170,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		tr.setGravity(Gravity.CENTER);
 		tr.addView(c1);
 		cadets.addView(tr);
-		System.out.println("got here w6");
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
 		c1.setText("Averages");
@@ -193,7 +180,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		tr.addView(c1);
 		tr.setGravity(Gravity.CENTER);
 		cadets.addView(tr);
-		System.out.println("got here w7");
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
 		c1.setText("Push-up Score: " );
@@ -202,7 +188,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		c1.setGravity(Gravity.CENTER);
 		c1.setBackgroundResource(R.drawable.gradient2);
 		tr.addView(c1);
-		System.out.println("got here w8");
 		c1 = new TextView(this);
 		c1.setText(Integer.toString((sumP / toShow.size())));
 		c1.setTextSize(18);
@@ -212,7 +197,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		tr.addView(c1);
 		tr.setGravity(Gravity.CENTER);
 		cadets.addView(tr);
-		System.out.println("got here w8");
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
 		c1.setText("Sit-up Score: ");
@@ -221,7 +205,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		c1.setGravity(Gravity.CENTER);
 		c1.setBackgroundResource(R.drawable.gradient2);
 		tr.addView(c1);
-		System.out.println("got here w9");
 		c1 = new TextView(this);
 		c1.setText(Integer.toString((sumS / toShow.size())));
 		c1.setTextSize(18);
@@ -231,7 +214,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		tr.addView(c1);
 		tr.setGravity(Gravity.CENTER);
 		cadets.addView(tr);
-		System.out.println("got here w10");
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
 		c1.setText("Raw Score: ");
@@ -250,7 +232,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		tr.addView(c1);
 		tr.setGravity(Gravity.CENTER);
 		cadets.addView(tr);
-		System.out.println("got here w11");
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
 		c1.setText("Overall: ");
@@ -269,7 +250,6 @@ public class analyticsIndividualEvent extends Activity  implements View.OnClickL
 		tr.addView(c1);
 		tr.setGravity(Gravity.CENTER);
 		cadets.addView(tr);
-		System.out.println("got here w12");
 		tr =  new TableRow(this);
 		c1 = new TextView(this);
 		c1.setText("\n");

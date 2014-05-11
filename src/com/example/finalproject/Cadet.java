@@ -35,7 +35,6 @@ public class Cadet {
 		pushUps = p;
 		sitUps = s;
 		runTime = r;
-		System.out.println("Cadet made with " + name + " " + age + " " + gender + " " +p+" " +r+" "+s);
 	}
 	public Cadet(String name, int age, String gender){
 		this.name = name;
@@ -64,10 +63,7 @@ public class Cadet {
 		cal.getTimeInMillis();
 		double secs = (curr.getTimeInMillis() - cal.getTimeInMillis());
 		double days = secs/(1000*60*60*24);
-		System.out.println("TIMMMEEEEEEEE:");
-		System.out.println((curr.getTimeInMillis() - cal.getTimeInMillis()));
-		System.out.println(days);
-		System.out.println(days/365);
+
 		return (-1)*((int)Math.ceil(days/365));
 	}
 	//pass data as encoding for ease of passing through 

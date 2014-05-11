@@ -12,6 +12,36 @@ public class DBUtil {
 	public static final String clientKey = "QYfZLiM6GGIDWDR3GIRg0jNjnrAXk7MI3RHrcjS5";
 	public static final String dbListID = "QXfmmCx63v";
 	
+	public static String getDBIdFromName(String name){
+		String ret = "";
+		//first get the dblist
+		ParseObject dbList = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("DBList");
+		try {
+			dbList = query.get(dbListID);
+		} catch (ParseException e) {
+			//Failed to get DBList TODO:what does this even mean, no connectivity?
+			System.out.println("ParseException querying for dbList");
+			return ret;
+		}
+		if(dbList == null){//DBList is null. Not connected to internet?
+			System.out.println("DBList is null");
+			return ret;//TODO: sactuall handle this
+		}
+		int dbNum = dbList.getInt("dbNum");
+		if(dbNum != 0){
+			for(int i = 1; i <= dbNum; i++){//stored as name then id
+				String nameDb = dbList.getString("db" + Integer.toString(i) + "Name");
+				if(nameDb != null){
+					if(nameDb.length() > 0 && !(nameDb.equalsIgnoreCase("null"))){
+						ret = nameDb;
+					}
+				}
+			}
+		}
+		return ret;
+	}
+	
 	public static boolean deleteDB(String dbId){
 		//first load db
 		ParseObject db = null;
