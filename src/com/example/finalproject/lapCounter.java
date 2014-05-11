@@ -192,7 +192,7 @@ public class lapCounter extends Activity implements View.OnClickListener {
 						previousLapSums.add(0);
 						cadetLapCounters[i] = numLaps;
 						TextView time = (TextView)findViewById(i);
-						time.setText("Suplinski, Clayton" + "\n" + cadetLapCounters[i]);
+						time.setText(cdtList.get(i).get(0) + "\n" + cadetLapCounters[i]);
 					}
 
 					seconds = 0;minutes = 0;
