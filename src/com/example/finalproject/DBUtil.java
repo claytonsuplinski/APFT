@@ -34,7 +34,9 @@ public class DBUtil {
 				String nameDb = dbList.getString("db" + Integer.toString(i) + "Name");
 				if(nameDb != null){
 					if(nameDb.length() > 0 && !(nameDb.equalsIgnoreCase("null"))){
-						ret = nameDb;
+						if(nameDb.equals(name)){
+							ret = dbList.getString("db" + Integer.toString(i) + "Id");
+						}
 					}
 				}
 			}

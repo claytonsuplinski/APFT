@@ -50,6 +50,7 @@ public class inputDatabaseCode extends Activity {
 				EditText editId = (EditText)findViewById(R.id.databaseID);
 				EditText editCode = (EditText)findViewById(R.id.databaseCode);
 				String id = DBUtil.getDBIdFromName(editId.getText().toString());
+				System.out.println("id is " + id);
 				String code = editCode.getText().toString();
 				System.out.println("get here 3");
 				String auth = DBUtil.linkDb(id, code);
