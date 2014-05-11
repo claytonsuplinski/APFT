@@ -98,7 +98,6 @@ public class analyticsIndividualCadet extends Activity  implements View.OnClickL
 			}
 			c1 = new TextView(this);
 			c1.setText(comp + "/3");
-			c1.setOnClickListener(this);
 			c1.setTextSize(20);
 			c1.setTextColor(Color.BLACK);
 			c1.setGravity(Gravity.CENTER);
@@ -107,7 +106,6 @@ public class analyticsIndividualCadet extends Activity  implements View.OnClickL
 			
 			c1 = new TextView(this);
 			c1.setText(Integer.toString(cdt.getScore()));
-			c1.setOnClickListener(this);
 			c1.setTextSize(20);
 			c1.setTextColor(Color.BLACK);
 			c1.setGravity(Gravity.CENTER);
